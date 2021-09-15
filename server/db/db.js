@@ -67,25 +67,27 @@ function getPlantInfo (id) {
  
 // }
 
-function addPlantDetails(wholePlantDetails) {
 
-    console.log(wholePlantDetails)
-    const water = {amount: wholePlantDetails.water}
-    const light = {amount: wholePlantDetails.light}
-    const species = {common: wholePlantDetails.common, scientific: wholePlantDetails.scientific, water: wholePlantDetails.water, water_frequency: wholePlantDetails.water_frequency, light: wholePlantDetails.light, notes: wholePlantDetails.species_note}
-    const plant = {name: wholePlantDetails.name, species: wholePlantDetails.species, img: wholePlantDetails.img, note: wholePlantDetails.note}
+//THIS IS TEST RUN CODE....
+// function addPlantDetails(wholePlantDetails) {
 
-    addPlant(plant)
-    addWater(water)
-    addSpecies(species)
-    addlight(light)
-    return getPlantInfo(wholePlantDetails.id)
-  // return db('plants')
-  // .insert('plant.id', )
-  // .then(plantId => {
-  //   return getPlantInfo(plantId[0])
-  // })
-}
+//     console.log(wholePlantDetails)
+//     const water = {amount: wholePlantDetails.water}
+//     const light = {amount: wholePlantDetails.light}
+//     const species = {common: wholePlantDetails.common, scientific: wholePlantDetails.scientific, water: wholePlantDetails.water, water_frequency: wholePlantDetails.water_frequency, light: wholePlantDetails.light, notes: wholePlantDetails.species_note}
+//     const plant = {name: wholePlantDetails.name, species: wholePlantDetails.species, img: wholePlantDetails.img, note: wholePlantDetails.note}
+
+//     addPlant(plant)
+//     addWater(water)
+//     addSpecies(species)
+//     addlight(light)
+//     return getPlantInfo(wholePlantDetails.id)
+//   // return db('plants')
+//   // .insert('plant.id', )
+//   // .then(plantId => {
+//   //   return getPlantInfo(plantId[0])
+//   // })
+// }
 
 
 function addPlant(plant)
@@ -165,31 +167,31 @@ function getSpeciesById(id)
 }
 
 
-function getPlantById(id){
+// function getPlantById(id){
 
-  return db('plants')
-  .join('species', 'species', 'species.id')
-  .join('water', 'water', 'water.id')
-  .join('light', 'light', 'light.id')
-  .select(
-    'plants.id',
-    'name',
-    'species.id AS species_id',
-    'common',
-    'scientific',
-    'img',
-    'light.id AS light_id',
-    'light.amount AS light',
-    'water.id AS water_id',
-    'water.amount AS water',
-    'water_freq',
-    'last_watered',
-    'note',
-    'notes AS species_notes',
-  )
-  .where('plant.id', id)
-  .first()
-}
+//   return db('plants')
+//   .join('species', 'species', 'species.id')
+//   .join('water', 'water', 'water.id')
+//   .join('light', 'light', 'light.id')
+//   .select(
+//     'plants.id',
+//     'name',
+//     'species.id AS species_id',
+//     'common',
+//     'scientific',
+//     'img',
+//     'light.id AS light_id',
+//     'light.amount AS light',
+//     'water.id AS water_id',
+//     'water.amount AS water',
+//     'water_freq',
+//     'last_watered',
+//     'note',
+//     'notes AS species_notes',
+//   )
+//   .where('plant.id', id)
+//   .first()
+// }
 
 
 function deletePlant(id)
@@ -199,15 +201,25 @@ function deletePlant(id)
   .del()
 }
 
+function updatePlant(id, newPlant) 
+{
+  return db('plants')
+  .where('id', id)
+  .update(newPlant)
+}
+
+
+
 module.exports = {
   getPlants,
   getPlantInfo,
-  addPlantDetails,
+  //addPlantDetails,
   addPlant,
   getPlantById,
   getSpeciesById,
   getLightById,
   getWaterById,
   getAllSpecies,
-  deletePlant
+  deletePlant,
+  updatePlant
 }
