@@ -14,6 +14,9 @@ function Plant (props) {
       <p>Water: {plant.water} and make sure it happens every {plant.water_freq} days</p>
       <p>Personal notes about {plant.name}: {plant.note}</p>
       <p>Notes on Species: {plant.species_notes}</p>
+
+      <button onClick={toggleEditing}>Edit</button>
+      <button onClick={deletePlant}>Delete</button>
     </>
   }
 
