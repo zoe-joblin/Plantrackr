@@ -8,7 +8,7 @@ function PlantList (props) {
   return (
     <div>
       <ul>
-        {plants.map(p => <Link to={`/plants/${p.id}`}>
+        {plants.map(p => <Link to={`/plants/${p.id}`} key={p.id}>
           <p>{p.name}</p>
         </Link>)}
       </ul>
