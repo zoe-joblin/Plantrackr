@@ -60,13 +60,13 @@ function plantHasBeenDeleted()
   }
 }
 
-export function deletePlant(id)
-{ 
-  return {
-    type: DELETE_PLANT,
-    id: id
-  }
-}
+// export function deletePlant(id)
+// { 
+//   return {
+//     type: DELETE_PLANT,
+//     id: id
+//   }
+// }
 export const update = (id, plant) => {
 
   return {

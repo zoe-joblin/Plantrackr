@@ -23,21 +23,25 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req,res) => {
 
-
   const plant = req.body
- // plant = JSON.parse(plant)
-  // plant.note = JSON.stringify(plant.note)
-  //console.log('plant ', plant)
   db.addPlant(plant)
   .then(eachPlant => {
-    console.log("each plant ",eachPlant)
-   // eachPlant.note = JSON.parse(eachPlant.note)
+    //console.log("each plant ",eachPlant)
     return res.json(eachPlant)
   })
   .catch(error => {
     res.status(500).json(`error did not work: ${error.message}`)
   })
 
+})
+
+router.delete('/:id', (req, res) => {
+  const id = req.params.id
+  db.deletePlant(id)
+  .then(plant => {
+      //console.log("delete plant" , plant)
+      return res.json(`plant id number ${id} has been deleted`)
+  })
 })
 
 router.get('/species', (req,res) => {

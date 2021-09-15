@@ -101,7 +101,6 @@ function addPlant(plant)
 }
 
 
-
 function getPlantById(id)
 {
   return db('plants')
@@ -131,8 +130,6 @@ function addWater(amount){
     return getWaterById(waterId[0])
   })
 }
-
-
 
 function addSpecies(plantSpecies){
   return db('species')
@@ -195,9 +192,11 @@ function getPlantById(id){
 }
 
 
-function deletePlant()
-{
-
+function deletePlant(id)
+{ 
+  return db('plants')
+  .where('id', id)
+  .del()
 }
 
 module.exports = {
@@ -209,5 +208,6 @@ module.exports = {
   getSpeciesById,
   getLightById,
   getWaterById,
-  getAllSpecies
+  getAllSpecies,
+  deletePlant
 }
