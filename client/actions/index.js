@@ -1,7 +1,8 @@
 
-import { getPlants, getOnePlant, updatePlant ,deleteThePlant} from '../api/plants'
+import { getPlants, getOnePlant, updatePlant ,deleteThePlant, getSpecies} from '../api/plants'
 
 export const SAVE_PLANTS = 'SAVE_PLANTS'
+export const SAVE_SPECIES = 'SAVE_SPECIES'
 export const LOADING = 'LOADING'
 export const ERROR = 'ERROR'
 
@@ -37,6 +38,13 @@ export const savePlants = (plants) => {
   return {
     type: SAVE_PLANTS,
     plants
+  }
+}
+
+export const saveSpecies = (species) => {
+  return {
+    type: SAVE_SPECIES,
+    species
   }
 }
 
@@ -86,6 +94,20 @@ export function loadPlants () {
   }
 }
 
+export function loadSpecies () {
+  return (dispatch) => {
+    dispatch(loading())
+    getSpecies()
+      .then((result) => {
+        dispatch(saveSpecies(result))
+        // dispatch(notLoading())
+      })
+      .catch(err => {
+        dispatch(errMessage(err.message))
+      })
+  }
+}
+
 export function updatedPlant (id, newPlantDetails) {
   return (dispatch) => {
     updatePlant(id, newPlantDetails)
@@ -95,3 +117,16 @@ export function updatedPlant (id, newPlantDetails) {
   }
   
 }
+
+export function createNewPlant (plant) {
+  return (dispatch) => {
+    addPlant(plant)
+      .then((newId) => {
+        dispatch(addNewPlant({ id: newId, plant }))
+      })
+      .catch(err => {
+        dispatch(errorHappened(err.message))
+      })
+  }
+}
+
