@@ -30,3 +30,4 @@ exports.seed = knex => {
     },
   ])
 }
+

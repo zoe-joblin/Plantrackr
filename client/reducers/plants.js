@@ -1,39 +1,20 @@
-import {SAVE_PLANTS, UPDATE_PLANT, DELETE_PLANT} from '../actions'
+
+import {SAVE_PLANTS, EDIT_PLANT, DEL_PLANT, ADD_PLANT} from '../actions'
 
 function reducer (state = [], action) {
   switch (action.type) {
     case SAVE_PLANTS:
       return action.plants
-    // case UPDATE_PLANT:
-    //   return {
-
-    //   }  
-    case DELETE_PLANT:
-        return deletePlant(state, action)
-        
-    default:
-      return state
-  }
-}
-
-
-function update(state, action)
-{
-
-    
-}
-
-function deletePlant(plantsArrayState, action)
-{
-
-  const filteredPlant = plantsArrayState.filter(eachPlant => {
-
-    if(eachPlant.id !== action.id)
-    {
-      return eachPlant
+    case EDIT_PLANT:
+      const plantToUpdate = state.find(plant => plant.id === action.id)
+      plantToUpdate = action.plant
+      return [...state]
+      return
+      default:
+        return state
+      }
     }
-  })
-  return filteredPlant
-}
-
-export default reducer
+    
+    export default reducer
+    
+    // case DELETE_PLANT:
