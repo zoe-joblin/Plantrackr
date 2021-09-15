@@ -1,9 +1,10 @@
-import { getPlants, getOnePlant, updatePlant } from '../api/plants'
 
+import { getPlants, getOnePlant, updatePlant ,deleteThePlant} from '../api/plants'
 
 export const SAVE_PLANTS = 'SAVE_PLANTS'
 export const LOADING = 'LOADING'
 export const ERROR = 'ERROR'
+
 export const EDIT_PLANT = 'EDIT_PLANT'
 export const ADD_PLANT = 'ADD_PLANT'
 export const DEL_PLANT = 'DEL_PLANT'
@@ -52,6 +53,29 @@ export const errMessage = (message) => {
   }
 }
 
+function plantHasBeenDeleted()
+{
+  return {
+    type: PLANT_DELETED
+  }
+}
+
+export function deletePlant(id)
+{ 
+  return {
+    type: DELETE_PLANT,
+    id: id
+  }
+}
+export const update = (id, plant) => {
+
+  return {
+    type: 'UPDATE_PLANT',
+    id: id,
+    plant: plant
+  }
+}
+
 // ----- THUNKS -----
 
 export function loadPlants () {
@@ -59,6 +83,7 @@ export function loadPlants () {
     dispatch(loading())
     getPlants()
       .then((result) => {
+        //console.log("results in thunk index"+i, result)
         dispatch(savePlants(result))
         // dispatch(notLoading())
       })
@@ -67,7 +92,6 @@ export function loadPlants () {
       })
   }
 }
-
 
 export function updatedPlant (id, newPlantDetails) {
   return (dispatch) => {

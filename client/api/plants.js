@@ -14,6 +14,7 @@ export const getOnePlant = (id) => {
     .then(res => res.body)
 }
 
+
 export const addPlant = (newPlant) => {
   return request
     .post(baseUrl)
