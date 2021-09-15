@@ -13,3 +13,20 @@ export const getOnePlant = (id) => {
     .get(`${baseUrl}/${id}`)
     .then(resp => resp.body)
 }
+
+
+// export const updatePlant = (id, plant) =>{
+
+//   return request
+//   .patch(`${baseUrl}/${id}`)
+//   .send({plant})
+//   .then(res => res.body)
+// }
+
+export function deleteThePlant(id)
+{
+    return request
+    .delete(`${baseUrl}/${id}`)
+    .then(res => res.body)
+}
+
