@@ -21,11 +21,11 @@ export const addPlant = (newPlant) => {
     .then (res => res.body)
 }
 
-export const deletePlant = (id) => {
-  return request 
-    .delete(`${baseUrl}/${id}`)
-    .then(res => res.body)
-}
+// export const deletePlant = (id) => {
+//   return request 
+//     .delete(`${baseUrl}/${id}`)
+//     .then(res => res.body)
+// }
 
 //when updating we may need to be more specific with the sections 
 //being updated? tbc

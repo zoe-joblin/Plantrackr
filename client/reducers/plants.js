@@ -8,11 +8,12 @@ function reducer (state = [], action) {
       const plantToUpdate = state.find(plant => plant.id === action.id)
       plantToUpdate = action.plant
       return [...state]
-      case DELETE_PLANT:
-return
-    default:
-      return state
-  }
-}
-
-export default reducer
+      return
+      default:
+        return state
+      }
+    }
+    
+    export default reducer
+    
+    // case DELETE_PLANT:
