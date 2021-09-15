@@ -4,6 +4,7 @@ const db = require('../db/db')
 
 const router = express.Router()
 
+
 router.get('/', (req, res) => {
   db.getPlants()
     .then(plants => {
@@ -12,9 +13,10 @@ router.get('/', (req, res) => {
     .catch(err => res.status(500).json({ message: err.message }))
 })
 
+
 router.get('/:id', (req, res) => {
   let { id } = req.params
-  db.getPlantInfo(id)
+    db.getPlantInfo(id)
     .then(plant => {
       res.json(plant)
     })
@@ -35,6 +37,7 @@ router.post('/', (req,res) => {
 
 })
 
+
 router.delete('/:id', (req, res) => {
   const id = req.params.id
   db.deletePlant(id)
@@ -44,6 +47,18 @@ router.delete('/:id', (req, res) => {
   })
 })
 
+
+router.patch('/:id', (req, res) => {
+  const id = req.params.id
+  const newPlant = req.body
+  db.updatePlant(id, newPlant)
+  .then(plant => {
+    //console.log("updatePlant", plant)
+    return res.json(newPlant)
+  })
+}) 
+
+
 router.get('/species', (req,res) => {
 
   db.getAllSpecies()
@@ -52,5 +67,8 @@ router.get('/species', (req,res) => {
   })
 
 })
+
+
+
 
 module.exports = router
