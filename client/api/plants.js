@@ -5,11 +5,20 @@ const baseUrl = '/api/v1/plants'
 export const getPlants = () => {
   return request
     .get(baseUrl)
-    .then(resp => resp.body)
+    .then(res => res.body)
 }
 
 export const getOnePlant = (id) => {
   return request
     .get(`${baseUrl}/${id}`)
-    .then(resp => resp.body)
+    .then(res => res.body)
+}
+
+
+export const updatePlant = (id, newDetails) => {
+  return request
+    .patch(`${baseUrl}/${id}`)
+    .send(newDetails)
+    .then(res => res.body)
+
 }
