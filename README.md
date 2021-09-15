@@ -25,7 +25,7 @@ As a user I want to be able to:
 - edit the details of my plant.
 - delete a plant (that sadly I have killed).
 
-### Stretch Stories (optional)
+### Stretch Stories
 
 **PLANTS**  
 As a user I want to be able to: 
@@ -39,6 +39,10 @@ As a user I want to be able to:
 
 - post a question about my plant.
 - answer a question.
+
+## Database Layout
+
+[database diagram](/dbDiagram.png)
 
 ## API Routes
 
