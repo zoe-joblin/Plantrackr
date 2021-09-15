@@ -42,7 +42,7 @@ As a user I want to be able to:
 
 ## Database Layout
 
-[database diagram](/dbDiagram.png)
+![database diagram](/dbDiagram.png)
 
 ## API Routes
 
