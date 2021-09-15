@@ -1,9 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
+
+// import { deletePlantAction, editPlantAction} from '../actions'
 
 function Plant (props) {
   const { plants, loading } = props
   const plant = plants.find(p => p.id === Number(props.match.params.id))
+
+  const [editing, setEditing] = useState(false)
+  const [newPlant, setNewPlant] = useState(plant)
+
+  const toggleEditing = () => {
+    setEditing(!editing)
+    setNewPlant(plant)
+  }
+
+  const editplant = () => {
+    // dispatch(editPlantAction(plant, newPlant))
+  }
+  
+  const deletePlant = () => {
+    // dispatchEvent(deletePlantAction(plant))
+    
+  }
+
+
 
   const showPlant = () => {
     return <>
