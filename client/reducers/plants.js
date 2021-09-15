@@ -1,4 +1,4 @@
-import {SAVE_PLANTS, EDIT_PLANT} from '../actions'
+import {SAVE_PLANTS, EDIT_PLANT, DEL_PLANT, ADD_PLANT} from '../actions'
 
 function reducer (state = [], action) {
   switch (action.type) {
@@ -8,6 +8,8 @@ function reducer (state = [], action) {
       const plantToUpdate = state.find(plant => plant.id === action.id)
       plantToUpdate = action.plant
       return [...state]
+      case DELETE_PLANT:
+return
     default:
       return state
   }
