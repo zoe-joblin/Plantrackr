@@ -9,7 +9,6 @@ function reducer (state = [], action) {
       const plantToUpdate = state.find(plant => plant.id === action.id)
       plantToUpdate = action.plant
       return [...state]
-      return
       default:
         return state
       }
