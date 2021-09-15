@@ -36,3 +36,9 @@ export const updatePlant = (id, newDetails) => {
     .send(newDetails)
     .then(res => res.body)
 }
+
+export const getSpecies=()=>{
+  return request
+  .get(`api/v1/species`)
+  .then(res=>res.body)
+}

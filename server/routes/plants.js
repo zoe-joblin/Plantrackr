@@ -59,14 +59,6 @@ router.patch('/:id', (req, res) => {
 }) 
 
 
-router.get('/species', (req,res) => {
-
-  db.getAllSpecies()
-  .then(allSpecies => {
-    return res.json(allSpecies)
-  })
-
-})
 
 
 
