@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom'
 
 function SpeciesList(props)
 {
-  var species = props.species
+  var {species} = props
   console.log(species)
   return (
     <>
