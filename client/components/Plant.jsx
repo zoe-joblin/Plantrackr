@@ -7,10 +7,13 @@ import { deleteThunk, updatedPlant} from '../actions'
 function Plant (props) {
   const { plants, dispatch, species } = props
   const plant = plants.find(p => p.id === Number(props.match.params.id))
+  const id=plant.id;
+
   const [editing, setEditing] = useState(false)
-  const [newPlant, setNewPlant] = useState(plant)
   const [plantName, setplantName] = useState(plant.name)
-  const [speCies, setSpecies] = useState(plant.scientific)
+  const [imAge, setImage] = useState(plant.img)
+  const [speCies, setSpecies] = useState(plant.species_id)
+  const [scienTific, setScientific] = useState(plant.scientific)
   const [note, setNote] = useState(plant.note)
   const [commonName, setCommonName] = useState(plant.common)
   const [light, setLight] = useState(plant.light)
@@ -20,16 +23,29 @@ function Plant (props) {
 
   const speciesChangeHandler=(e)=>{
     var selectedSpecies=species.find(s=>s.scientific===e.target.value)
-    console.log(selectedSpecies)
+    console.log(e.target.value)
+    setSpecies(selectedSpecies.id)
     setCommonName(selectedSpecies.common)
+    setScientific(selectedSpecies.scientific)
     setLight(selectedSpecies.light)
     setWater(selectedSpecies.water)
     setWaterFreq(selectedSpecies.water_freq)
     seSpeciesNote(selectedSpecies.note)
   }
+
   const toggleEditing = () => {
+     if(editing==true)
+    {
+      const newPlant={
+        name:plantName,
+        img:imAge,
+        species:speCies,
+        note:note,
+        }
+        console.log(newPlant)
+      dispatch(updatedPlant(id,newPlant))
+    }
     setEditing(!editing)
-    setNewPlant(plant)
   }
 
   const nameChangeHandler=(e) =>{
@@ -43,31 +59,32 @@ function Plant (props) {
 
   const showPlant = () => {
     return <>
-      <img src={`/images/${plant.img}`} style={{ maxWidth: '300px' }}/>
-      Plant Name: <p value={plantName} onChange={(e)=>nameChangeHandler(e)}></p>
-      Note: <p value={note} onChange={(e)=>noteChangeHandler(e)}></p>
-      <select onChange={(e)=>speciesChangeHandler(e)}>
-      {
-        species.map((s)=>{
-          return <option key={s.id} value={s.scientific} >{s.scientific}({s.common})</option>
-        })
-      }
-      </select>
-      <p> Common Name: {commonName}</p>
-      <p> Preferred amount of light: {light}</p>
-      <p> Water amount: {water} every {water_freq} days</p>
-      <p> Notes on Species: {speciesNote}</p> 
-
-      <button onClick={toggleEditing}>Edit</button>
-
-      <button onClick={() => dispatch(deleteThunk(plant.id))}>Delete</button>
+            <img src={`/images/${plant.img}`} style={{ maxWidth: '300px' }}/>
+            <div>
+            {editing?<button onClick={toggleEditing}>Save Details</button> : <button onClick={toggleEditing}>Edit Details</button>}
+            {editing?<button type='button' disabled>Delete Plant</button> : <button onClick={() => dispatch(deleteThunk(plant.id))}>Delete Plant</button>}
+            </div>
+            <div>
+            Plant Name: {editing?<input value={plantName} onChange={(e)=>nameChangeHandler(e)}></input> : <p>{plantName}</p>}
+            Note: {editing? <input value={note} onChange={(e)=>noteChangeHandler(e)}></input> : <p>{note}</p>}
+            {editing ?<select onChange={(e)=>speciesChangeHandler(e)}>
+            {
+              species.map((s)=>{
+                return <option key={s.id} value={s.scientific}>{s.scientific}({s.common})</option>
+              })
+            }
+            </select> : <p>Species: {scienTific}</p>}
+            <p> Common Name: {commonName}</p>
+            <p> Preferred amount of light: {light}</p>
+            <p> How much water to give me: {water} every {water_freq} days</p>
+            <p> Notes on Species: {speciesNote}</p>       
+            </div>  
     </>
   }
 
   return (
     <div>
       {plant && showPlant()}
-      {/* {editPlant} */}
     </div>
   )
 }

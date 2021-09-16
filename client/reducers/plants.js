@@ -45,7 +45,6 @@ function updatePlant(plantArray,  action){
         eachPlant.species_id = action.species
         eachPlant.img = action.img
         eachPlant.note = action.note
-
         return eachPlant
     }
     return eachPlant
