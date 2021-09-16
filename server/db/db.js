@@ -78,7 +78,6 @@ function addPlant(plant)
     return db('plants')
     .insert(plant)
     .then(plantId => {
-
       console.log("plant id", plantId)
       return getPlantById(plantId[0])
     })
@@ -121,7 +120,6 @@ function addWater(amount){
   return db('water')
   .insert(amount)
   .then(waterId => {
-
     return getWaterById(waterId[0])
   })
 }
@@ -146,8 +144,7 @@ function getLightById(id)
 {
     return db('light')
     .where('id', id)
-    .first()
-  
+    .first()  
 }
 
 
@@ -210,6 +207,15 @@ function updateSpecies(id, newSpecies)
   .update(newSpecies)
 }
 
+function getWater()
+{
+  return db('water')
+}
+
+function getLight()
+{
+  return db('light')
+}
 
 module.exports = {
   getPlants,
@@ -228,5 +234,7 @@ module.exports = {
   updatePlant,
   deleteSpecies,
   deletePlantBySpeciesId,
-  updateSpecies
+  updateSpecies,
+  getWater,
+  getLight,
 }

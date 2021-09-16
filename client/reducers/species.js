@@ -6,7 +6,6 @@ function reducer (state = [], action) {
       return action.species
     case ADD_SPECIES:
       return [...state, action.species]
-
     default:
       return state
     }

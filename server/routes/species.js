@@ -13,6 +13,20 @@ router.get('/', (req,res) => {
 
 })
 
+router.get('/water', (req,res) => {
+  db.getWater()
+  .then(water => {
+    return res.json(water)
+  })
+})
+
+router.get('/light', (req,res) => {
+  db.getLight()
+  .then(light => {
+    return res.json(light)
+  })
+})
+
 router.post('/', (req, res) => {
   const species = req.body
   db.addSpecies(species)
@@ -47,6 +61,7 @@ router.patch('/:id', (req, res) => {
   })
   .catch (err => {console.log(err.message)})
 })
+
 
 
 module.exports = router;

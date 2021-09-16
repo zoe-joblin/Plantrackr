@@ -1,7 +1,7 @@
-import { getPlants, updatePlant ,deletePlant, getSpecies, addSpecies, addPlant } from '../api/plants'
+import { getPlants, updatePlant ,deletePlant, getSpecies, addSpecies, addPlant, getWater, getLight } from '../api/plants'
 
-
-
+export const SAVE_WATER = 'SAVE_WATER'
+export const SAVE_LIGHT = 'SAVE_LIGHT'
 export const SAVE_PLANTS = 'SAVE_PLANTS'
 export const SAVE_SPECIES = 'SAVE_SPECIES'
 export const LOADING = 'LOADING'
@@ -56,6 +56,21 @@ export const saveSpecies = (species) => {
     species
   }
 }
+
+export const saveWater = (water) => {
+  return {
+    type: SAVE_WATER,
+    water
+  }
+}
+
+export const saveLight = (light) => {
+  return {
+    type: SAVE_LIGHT,
+    light
+  }
+}
+
 export const loading = () => {
   return {
     type: LOADING
@@ -137,6 +152,33 @@ export function updatedPlant (id, newPlantObject) {
   }
 }
 
+export function loadWater () {
+  return (dispatch) => {
+    dispatch(loading())
+    getWater()
+      .then((result) => {
+        dispatch(saveWater(result))
+        // dispatch(notLoading())
+      })
+      .catch(err => {
+        dispatch(errMessage(err.message))
+      })
+  }
+}
+
+export function loadLight () {
+  return (dispatch) => {
+    dispatch(loading())
+    getLight()
+      .then((result) => {
+        dispatch(saveLight(result))
+        // dispatch(notLoading())
+      })
+      .catch(err => {
+        dispatch(errMessage(err.message))
+      })
+  }
+}
 
 // export function updateWombatName (wombat, newName) {
 //   return (dispatch) => {
@@ -162,6 +204,7 @@ export function createNewPlant (plant) {
 
 export function createNewSpecies (species) {
   return (dispatch) => {
+    console.log(species)
     addSpecies(species)
       .then((newId) => {
         dispatch(addSpeciesAction ({ id: newId, ...species}))
