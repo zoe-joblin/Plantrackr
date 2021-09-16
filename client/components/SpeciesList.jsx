@@ -10,6 +10,7 @@ function SpeciesList(props)
   var species = props.species
   console.log(species)
   return (
+    <>
     <div>
     <ul>
       {species.map(s => <Link to={`/species/${s.id}`} key={s.id}>
@@ -17,6 +18,7 @@ function SpeciesList(props)
       </Link>)}
     </ul>
   </div>
+  </>
   )
 }
 
