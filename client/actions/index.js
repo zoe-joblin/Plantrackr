@@ -79,15 +79,12 @@ export const updateAction = (id, plant) => {
   }
 }
 
-<<<<<<< HEAD
 export const addSpeciesAction = (newSpecies) => {
     return {
       type: ADD_SPECIES,
       species: newSpecies
     }
 }
-=======
->>>>>>> 91c9fc093021ee7931327ad6b83af65cece6fe4a
 
 // ----- THUNKS -----
 
