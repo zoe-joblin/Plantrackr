@@ -48,7 +48,138 @@ function getPlantInfo (id) {
     )
 }
 
+
+
+
+//THIS IS TEST RUN CODE....
+// function addPlantDetails(wholePlantDetails) {
+
+//     console.log(wholePlantDetails)
+//     const water = {amount: wholePlantDetails.water}
+//     const light = {amount: wholePlantDetails.light}
+//     const species = {common: wholePlantDetails.common, scientific: wholePlantDetails.scientific, water: wholePlantDetails.water, water_frequency: wholePlantDetails.water_frequency, light: wholePlantDetails.light, notes: wholePlantDetails.species_note}
+//     const plant = {name: wholePlantDetails.name, species: wholePlantDetails.species, img: wholePlantDetails.img, note: wholePlantDetails.note}
+
+//     addPlant(plant)
+//     addWater(water)
+//     addSpecies(species)
+//     addlight(light)
+//     return getPlantInfo(wholePlantDetails.id)
+//   // return db('plants')
+//   // .insert('plant.id', )
+//   // .then(plantId => {
+//   //   return getPlantInfo(plantId[0])
+//   // })
+// }
+
+
+function addPlant(plant)
+{
+    return db('plants')
+    .insert(plant)
+    .then(plantId => {
+
+      console.log("plant id", plantId)
+      return getPlantById(plantId[0])
+    })
+    
+}
+
+
+function getPlantById(id)
+{
+  return db('plants')
+  .where('id', id)
+  .first()
+}
+
+function getAllSpecies()
+{
+  return db('species')
+}
+
+function getWaterById(id)
+{
+    return db('water')
+    .where('id', id)
+    .first()
+  
+}
+
+
+function addWater(amount){
+  return db('water')
+  .insert(amount)
+  .then(waterId => {
+
+    return getWaterById(waterId[0])
+  })
+}
+
+function addSpecies(plantSpecies){
+  return db('species')
+  .insert(plantSpecies)
+  .then(speciesId => {
+    return getSpeciesById(speciesId[0])
+  })
+}
+
+function addlight(amount){
+  return db('light')
+  .insert(amount)
+  .then(lightId => {
+    return getLightById(lightId[0])
+  })
+}
+
+
+function getLightById(id)
+{
+    return db('light')
+    .where('id', id)
+    .first()
+  
+}
+
+function getSpeciesById(id)
+{
+    return db('species')
+    .where('id', id)
+    .first()
+  
+}
+
+
+function deletePlant(id)
+{ 
+  return db('plants')
+  .where('id', id)
+  .del()
+}
+
+
+function updatePlant(id, newPlant) 
+{
+  return db('plants')
+  .where('id', id)
+  .update(newPlant)
+}
+
+
+
 module.exports = {
   getPlants,
-  getPlantInfo
+  getPlantInfo,
+  //addPlantDetails,
+  addPlant,
+  getPlantById,
+  addSpecies,
+  getSpeciesById,
+  addWater,
+  addlight,
+  getLightById,
+  getWaterById,
+  getAllSpecies,
+  deletePlant,
+  updatePlant
 }
