@@ -1,6 +1,7 @@
 import { getPlants, updatePlant ,deletePlant, getSpecies, addSpecies, addPlant } from '../api/plants'
 
 
+
 export const SAVE_PLANTS = 'SAVE_PLANTS'
 export const SAVE_SPECIES = 'SAVE_SPECIES'
 export const LOADING = 'LOADING'
@@ -79,9 +80,8 @@ export const updateAction = (id, plant) => {
     type: UPDATE_PLANT,
     id: id,
     name: plant.name,
-    species: plant.species,
-    img:
-    plant.img,
+    species_id: plant.species,
+    img: plant.img,
     note: plant.note
   }
 }
@@ -128,6 +128,7 @@ export function updatedPlant (id, newPlantObject) {
   return (dispatch) => {
     updatePlant(id, newPlantObject)
       .then((newPlant) => {
+        console.log("new plant", newPlant)
         dispatch(updateAction(id, newPlantObject))
       })
   }
