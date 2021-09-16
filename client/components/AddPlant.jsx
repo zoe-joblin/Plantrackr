@@ -4,8 +4,7 @@ import { connect } from 'react-redux'
 import {createNewPlant} from '../actions'
 
 function AddPlant(props){
-  const { dispatch ,species} = props
-  
+  const { dispatch ,species,water,light} = props
   const handleSubmit = (e) => {
     e.preventDefault()
     dispatch(createNewPlant({
@@ -33,7 +32,8 @@ function AddPlant(props){
   }
 
   const handleSpeciesChange = (e) => {
-    setNewSpecies( e.target.value )
+    console.log(parseInt(e.target.value) )
+    setNewSpecies(parseInt(e.target.value) )
   }
 
   // const [species,setSpecies] = useState("")
@@ -66,23 +66,21 @@ function AddPlant(props){
       />
       <label>Picture:</label>
       <input
-        type="file"
+        type="text"
         id="addPlantImage"
         name="name"
         value={newPlantImage}
         onChange={handleImageChange}
       />
-      <button>Add</button>
-      <div>
-        Species:
-        <select>
+              Species:
+        <select  onChange={e=>handleSpeciesChange(e)}>
           {
         species.map((s) => {
-          return <option key={s.id} onChange={(e)=>handleSpeciesChange(e)}>{s.scientific}({s.common})</option>
+          return <option key={s.id}>{s.id}{s.scientific}({s.common})</option>
           })
         }
         </select>
-      </div> 
+      <button>Add</button>
     </form>
     </>
   )
@@ -92,6 +90,8 @@ function mapStateToProps(globalState)
 {
   return  {
       species:globalState.species,
+      water:globalState.water,
+      light:globalState.light,
   }
 }
 

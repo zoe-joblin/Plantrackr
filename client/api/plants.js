@@ -8,6 +8,18 @@ export const getPlants = () => {
     .then(res => res.body)
 }
 
+export const getWater = () => {
+  return request
+    .get('/api/v1/species/water')
+    .then(res => res.body)
+}
+
+export const getLight = () => {
+  return request
+    .get('/api/v1/species/light')
+    .then(res => res.body)
+}
+
 export const getOnePlant = (id) => {
   return request
     .get(`${baseUrl}/${id}`)
@@ -50,6 +62,7 @@ export const getSpecies=()=>{
 // })
 
 export const addSpecies = (newSpecies) => {
+  console.log(newSpecies)
   return request 
   .post ('/api/v1/species')
   .send (newSpecies)

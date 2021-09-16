@@ -5,8 +5,9 @@ import {useEffect} from 'react'
 import { deleteThunk, updatedPlant} from '../actions'
 
 function Plant (props) {
-  console.log(props.species)
+
   const { plants, dispatch, species } = props
+  // console.log(props.species)
   const plant = plants.find(p => p.id === Number(props.match.params.id))
   const id=plant.id;
 
