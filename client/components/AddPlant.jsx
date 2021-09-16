@@ -4,26 +4,36 @@ import { connect } from 'react-redux'
 import {createNewPlant} from '../actions'
 
 function AddPlant(props){
-  const { dispatch } = props
+  const { dispatch ,species} = props
+  
   const handleSubmit = (e) => {
     e.preventDefault()
     dispatch(createNewPlant({
       name: newPlantName, 
       note: newPlantNote, 
-      img: newPlantImage
+      img: newPlantImage,
+      species:newSpecies,
     }))
   }
+  const [newSpecies,setNewSpecies] = useState('')
    const [newPlantName, setNewPlantName] = useState('')
   const [newPlantNote, setNewPlantNote] = useState('')
   const [newPlantImage, setNewPlantImage] = useState('')
+
   const handleNameChange = (e) => {
     setNewPlantName( e.target.value )
   }
+
   const handleNoteChange = (e) => {
     setNewPlantNote( e.target.value )
   }
+
   const handleImageChange = (e) => {
     setNewPlantImage( e.target.value )
+  }
+
+  const handleSpeciesChange = (e) => {
+    setNewSpecies( e.target.value )
   }
 
   // const [species,setSpecies] = useState("")
@@ -56,24 +66,23 @@ function AddPlant(props){
       />
       <label>Picture:</label>
       <input
-        type="text"
+        type="file"
         id="addPlantImage"
         name="name"
         value={newPlantImage}
         onChange={handleImageChange}
       />
       <button>Add</button>
-      {/* <div>
+      <div>
         Species:
         <select>
-          <div>
-            Species:<ReactDropdown options={speciesArr}></ReactDropdown>
-          </div> 
+          {
         species.map((s) => {
-          return <option key={s.id} onChange={(key)=>speciesChangeHandler(key)}>{s.scientific}({s.common})</option>
+          return <option key={s.id} onChange={(e)=>handleSpeciesChange(e)}>{s.scientific}({s.common})</option>
           })
+        }
         </select>
-      </div>  */}
+      </div> 
     </form>
     </>
   )
