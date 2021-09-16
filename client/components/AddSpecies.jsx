@@ -31,18 +31,24 @@ const [newLightData, setLight] = useState ('')
   }
 
   useEffect(() => {
-// call get water api (that goes to db and gets everything from water db table)
-    // then set response as water state
-// call get light api (that goes to db and gets everything from light db table)
-    // then set response as light state
-  }, [])
+    loadWater(water => {
+      setWater()
+    })}, [])
+
+  console.log(water)
+
+
+  // call get water api (that goes to db and gets everything from water db table)
+      // then set response as water state
+  // call get light api (that goes to db and gets everything from light db table)
+      // then set response as light state
 
   
 
   const handleSubmit = (e) => {
     e.preventDefault()
     dispatch(createNewSpecies({
-      [evt.target.name]: evt.target.value,
+      [e.target.name]: e.target.value,
       ...newSpeciesData
     }))
   }
@@ -50,7 +56,7 @@ const [newLightData, setLight] = useState ('')
 
 
 
-  const { common, scientific, water, frequency, light, notes } = newSpeciesData
+  const { common, scientific, frequency, notes } = newSpeciesData
   return (
     <>
       <h4>Add new species</h4>
@@ -69,10 +75,10 @@ const [newLightData, setLight] = useState ('')
           (that you defined at the top, now populated by useEffect)
            array and return options that have water id as value and water description as option */}
           <select value={water} onChange={handleChange}>
-            <option value={water0}>Give me some drips</option>
-            <option value={water1}>Give me a dollop</option>
-            <option value={water2}>Moisten me</option>
-            <option value={water3}>Soak me</option>
+            <option value={water}>Give me some drips</option>
+            <option value={water}>Give me a dollop</option>
+            <option value={water}>Moisten me</option>
+            <option value={water}>Soak me</option>
           </select>
         </div>
         <div>

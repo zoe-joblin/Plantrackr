@@ -17,6 +17,7 @@ function SpeciesList(props)
         <p>{s.common}</p>
       </Link>)}
     </ul>
+    <button><Link to={'/species/add'}>Add new species</Link></button>
   </div>
   </>
   )

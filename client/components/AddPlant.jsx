@@ -14,6 +14,7 @@ function AddPlant(props){
       species:newSpecies,
     }))
   }
+  
   const [newSpecies,setNewSpecies] = useState('')
    const [newPlantName, setNewPlantName] = useState('')
   const [newPlantNote, setNewPlantNote] = useState('')

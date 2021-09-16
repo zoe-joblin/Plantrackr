@@ -22,6 +22,7 @@ function Plant (props) {  const { plants, dispatch, species } = props
   const [speciesNote, setSpeciesNote] = useState('')
 
   useEffect(()=>{
+
     if(plant)
     {
     setImage(plant.img)
