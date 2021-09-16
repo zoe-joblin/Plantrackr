@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import {useEffect} from 'react'
 
-// import { deletePlantAction, editPlantAction} from '../actions'
+import { deleteThunk, updatedPlant} from '../actions'
 
 function Plant (props) {
   const { plants, dispatch, species } = props
@@ -59,6 +59,7 @@ function Plant (props) {
       <p> Notes on Species: {speciesNote}</p> 
 
       <button onClick={toggleEditing}>Edit</button>
+
       <button onClick={() => dispatch(deleteThunk(plant.id))}>Delete</button>
     </>
   }
@@ -66,6 +67,7 @@ function Plant (props) {
   return (
     <div>
       {plant && showPlant()}
+      {/* {editPlant} */}
     </div>
   )
 }
