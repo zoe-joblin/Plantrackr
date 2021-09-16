@@ -1,7 +1,7 @@
 import React, { useState }from 'react'
 import { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { createNewSpecies } from '../actions'
+import { createNewSpecies, loadLight, loadWater } from '../actions'
 
 
 function AddSpecies (props) {
@@ -9,23 +9,35 @@ const {dispatch} = props
 const [newSpeciesData, setNewSpecies] = useState ({
   common: '',
   scientific: '',
-  water: '',
   frequency: '',
-  light: '',
   notes: '',
 })
+
+const [newWaterData, setWater] = useState ('')
+
+const [newLightData, setLight] = useState ('')
+
+// define use state for array of water results
+// define use state for array of light results
 
   const handleChange = (e) => {
     e.preventDefault()
     setNewSpecies({
       common: '',
       scientific: '',
-      water: '',
       frequency: '',
-      light: '',
       notes: '',
     })
   }
+
+  useEffect(() => {
+// call get water api (that goes to db and gets everything from water db table)
+    // then set response as water state
+// call get light api (that goes to db and gets everything from light db table)
+    // then set response as light state
+  }, [])
+
+  
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -50,11 +62,14 @@ const [newSpeciesData, setNewSpecies] = useState ({
         </div>
         <div>
           <label htmlFor='name'>Water:</label>
+          {/* here you could then map over water state 
+          (that you defined at the top, now populated by useEffect)
+           array and return options that have water id as value and water description as option */}
           <select value={water} onChange={handleChange}>
-            <option value={water}>Give me some drips</option>
-            <option value={water}>Give me a dollop</option>
-            <option value={water}>Moisten me</option>
-            <option value={water}>Soak me</option>
+            <option value={water0}>Give me some drips</option>
+            <option value={water1}>Give me a dollop</option>
+            <option value={water2}>Moisten me</option>
+            <option value={water3}>Soak me</option>
           </select>
         </div>
         <div>
