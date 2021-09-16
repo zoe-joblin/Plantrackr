@@ -2,7 +2,7 @@ import React, { useState }from 'react'
 import { useEffect } from 'react'
 import { connect } from 'react-redux'
 import {creatNewPlant} from '../actions'
-import ReactDropdown from 'react-dropdown'
+
 
 function AddPlant(props)
 {
