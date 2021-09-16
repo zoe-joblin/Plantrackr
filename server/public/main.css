@@ -13,8 +13,7 @@ body, html {
   color: white;
 }
 
-.base
-{
+.base {
   width: 65%;
   border: 5px solid #193C0D;
   text-align: center;
@@ -23,7 +22,8 @@ body, html {
 .heading a:hover, 
 .list:hover, 
 .footer-container a:hover, 
-.plant-details button:hover {
+.plant-details button:hover,
+.add-plant button:hover {
   background-color: #729C65;
 }
 
@@ -31,6 +31,12 @@ body, html {
   margin: 20px auto;
   padding: 10px;
   background-color: #4E763B;
+}
+
+.logo{
+  padding-top: 21px;
+  max-height: 6vw;
+  float: left;
 }
 
 .plant-list {
@@ -48,6 +54,7 @@ body, html {
   margin: 20px auto;
   padding: 0 10px 20px 10px;
   background-color: #4E763B;
+  font-weight: bold;
 }
 
 .add-plant div {
@@ -63,6 +70,17 @@ input, select {
   padding: 5px;
   margin: 5px 0;
   width: 250px;
+}
+
+select {
+  width: 260px;
+}
+
+label {
+  display: inline-block;
+  width:100px;
+  text-align: right;
+  margin-right: 10px;
 }
 
 a {
@@ -105,6 +123,16 @@ a {
   border: 5px solid #193C0D;
   margin: 10px;
   padding: 15px 25px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: #6D835C;
+  color: white;
+}
+
+.add-plant button {
+  border: 5px solid #193C0D;
+  margin: 10px;
+  padding: 5px 15px;
   font-size: 1.2rem;
   font-weight: bold;
   background-color: #6D835C;

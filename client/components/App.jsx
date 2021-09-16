@@ -23,7 +23,9 @@ function App (props) {
   return (
     <div>
       <div className="base heading"> 
-        <h1><Link to='/'>PlantTrackr</Link></h1>
+      <img className='logo' src='/images/planticon.png'/>
+      <Link to='/'><h1>PlantTrackr</h1>
+      </Link>
       </div>
       <Route exact path='/' component={PlantList} />
       <Route path='/plants/:id' component={Plant} />
