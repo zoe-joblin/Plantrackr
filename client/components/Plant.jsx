@@ -1,27 +1,22 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 
-// import { deletePlantAction, editPlantAction} from '../actions'
+import { deleteThunk, updatedPlant} from '../actions'
 
 function Plant (props) {
-  const { plants, loading } = props
+  const { plants, dispatch } = props
   const plant = plants.find(p => p.id === Number(props.match.params.id))
 
-  const [editing, setEditing] = useState(false)
+  // const [editing, setEditing] = useState(false)
   const [newPlant, setNewPlant] = useState(plant)
 
-  const toggleEditing = () => {
-    setEditing(!editing)
-    setNewPlant(plant)
-  }
+  // const toggleEditing = () => {
+  //   setEditing(!editing)
+  //   setNewPlant(plant)
+  // }
 
-  const editplant = () => {
-    // dispatch(editPlantAction(plant, newPlant))
-  }
-  
-  const deletePlant = () => {
-    // dispatchEvent(deletePlantAction(plant))
-    
+  const editPlant = () => {
+    // dispatch(updatedPlant(plant, newPlant))
   }
 
 
@@ -36,8 +31,8 @@ function Plant (props) {
       <p>Personal notes about {plant.name}: {plant.note}</p>
       <p>Notes on Species: {plant.species_notes}</p>
 
-      <button onClick={toggleEditing}>Edit</button>
-      <button onClick={deletePlant}>Delete</button>
+      <button onClick={editPlant}>Edit</button>
+      <button onClick={() => dispatch(deleteThunk(plant.id))}>Delete</button>
     </>
   }
 
