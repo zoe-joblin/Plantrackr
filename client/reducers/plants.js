@@ -4,10 +4,7 @@ import {SAVE_PLANTS, UPDATE_PLANT, PLANT_DELETED, ADD_PLANT} from '../actions'
 function reducer (state = [], action) {
   switch (action.type) {
     case ADD_PLANT:
-
-      return {
-        plants: [...state, action.plant]
-      }
+      return [...state, action.plant]
     case SAVE_PLANTS:
       return action.plants
     case UPDATE_PLANT:
@@ -33,37 +30,27 @@ function reducer (state = [], action) {
       }
   }
     
-function updatePlant(plantArray, action){
+function updatePlant(plantArray,  action){
 
+  if(!action.img || !action.note || !action.name || !action.species || !action.id)
+  {
+    alert("actions must contain key prop id, name, note, species, img ")
+    return location.reload()
+  }
   const plants = plantArray.map(eachPlant => {
+    console.log("each plant", eachPlant)
     if(eachPlant.id === action.id)
     {
         eachPlant.name = action.name
-        eachPlant.species = action.species
+        eachPlant.species_id = action.species
         eachPlant.img = action.img
         eachPlant.note = action.note
         return eachPlant
-
     }
     return eachPlant
-
   })
-
-      // const plantToEdit = plantArray.find( plant => {
-
-      //   if(eachPlant.id === action.id)
-      //   {
-      //     return plant
-      //   }
-      // })
-
-      //   if(action.name)
-      //   {
-      //     plantToEdit.name = action.name
-      //   }
-
         return plants
-    }
+}
 
 
     export default reducer

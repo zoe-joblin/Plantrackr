@@ -97,6 +97,7 @@ function getAllSpecies()
   return db('species')
 }
 
+
 function getWaterById(id)
 {
     return db('water')
@@ -138,13 +139,6 @@ function getLightById(id)
   
 }
 
-function getSpeciesById(id)
-{
-    return db('species')
-    .where('id', id)
-    .first()
-  
-}
 
 
 function deletePlant(id)
@@ -163,6 +157,48 @@ function updatePlant(id, newPlant)
 }
 
 
+function getSpeciesById(id)
+{
+    return db('species')
+    .where('id', id)
+    .first()
+  
+}
+
+
+function addSpecies (species) 
+{
+ return db('species')
+ .insert(species)
+ .then(id => {
+   return getSpeciesById(id[0])
+ })
+
+}
+
+
+function deletePlantBySpeciesId (speciesId) 
+{
+  return db('plants')
+  .where('plants.species', speciesId)
+}
+
+function deleteSpecies(id) 
+{ 
+  deletePlantBySpeciesId(id)
+  return db('species')
+  .where('id', id)
+  .del()
+}
+
+
+function updateSpecies(id, newSpecies)
+{
+  return db('species')
+  .where('id', id)
+  .update(newSpecies)
+}
+
 
 module.exports = {
   getPlants,
@@ -178,5 +214,8 @@ module.exports = {
   getWaterById,
   getAllSpecies,
   deletePlant,
-  updatePlant
+  updatePlant,
+  deleteSpecies,
+  deletePlantBySpeciesId,
+  updateSpecies
 }
