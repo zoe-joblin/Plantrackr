@@ -10,25 +10,22 @@ function reducer (state = [], action) {
       }
     case SAVE_PLANTS:
       return action.plants
-    case EDIT_PLANT:
+    case UPDATE_PLANT:
       console.log("plant ", state)
       return updatePlant(state, action)
-      
         //plants: [state.map((plant) => plant === action.plant ? newPlant : plant )]
-      
       // const plantToUpdate = state.plants.find(plant => plant.id === action.id)
       // plantToUpdate = action.plant
       // console.log("update plant", plantToUpdate)
       // return [...state]
-
-      return [...state, action.plant]
+      // return [...state, action.plant]
     case SAVE_PLANTS:
       return action.plants
-    case UPDATE_PLANT:
-      const plantToUpdate = state.plants.find(plant => plant.id === action.id)
-      plantToUpdate = action.plant
-      console.log("update plant", plantToUpdate)
-      return [...state]
+    // case UPDATE_PLANT:
+    //   const plantToUpdate = state.plants.find(plant => plant.id === action.id)
+    //   plantToUpdate = action.plant
+    //   console.log("update plant", plantToUpdate)
+    //   return [...state]
     case PLANT_DELETED:
         return state.filter((plant) => plant.id !== action.id)
     default:
@@ -36,14 +33,12 @@ function reducer (state = [], action) {
       }
   }
     
-
 function updatePlant(plantArray, action){
 
   const plants = plantArray.map(eachPlant => {
 
     if(eachPlant.id === action.id)
     {
-
         eachPlant.name = action.name
         eachPlant.species = action.species
         eachPlant.img = action.img

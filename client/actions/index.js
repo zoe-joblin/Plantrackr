@@ -8,7 +8,7 @@ export const ERROR = 'ERROR'
 export const UPDATE_PLANT = 'UPDATE_PLANT'
 export const ADD_PLANT = 'ADD_PLANT'
 export const PLANT_DELETED = 'PLANT_DELETED'
-export const EDIT_PLANT = 'EDIT_PLANT'
+// export const EDIT_PLANT = 'EDIT_PLANT'
 
 // ----- ACTION CREATORS -----
 
@@ -18,15 +18,13 @@ export const addPlantAction = (newPlant) => {
     plant: newPlant
   }
 }
-
-
-export const EditPlantDetails = ( id, newPlantDetails ) => {
-  return {
-    type: EDIT_PLANT,
-    id,
-    name: newPlantDetails
-  }
-}
+// export const EditPlantDetails = ( id, newPlantDetails ) => {
+//   return {
+//     type: EDIT_PLANT,
+//     id,
+//     name: newPlantDetails
+//   }
+// }
 
 // export const deletePlant = ( id ) => {
 //   return {
@@ -70,7 +68,11 @@ export const updateAction = (id, plant) => {
   return {
     type: UPDATE_PLANT,
     id: id,
-    plant: plant
+    name: plant.name,
+    species: plant.species,
+    img:
+    plant.img,
+    note: plant.note
   }
 }
 // ----- THUNKS -----
@@ -104,11 +106,11 @@ export function loadSpecies () {
   }
 }
 
-export function updatedPlant (id, newPlantDetails) {
+export function updatedPlant (id, newPlantObject) {
   return (dispatch) => {
-    updatePlant(id, newPlantDetails)
+    updatePlant(id, newPlantObject)
       .then((newPlant) => {
-        dispatch(updateAction(newPlant))
+        dispatch(updateAction(id, newPlantObject))
       })
   }
   

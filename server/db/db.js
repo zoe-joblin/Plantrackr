@@ -85,7 +85,6 @@ function addPlant(plant)
     
 }
 
-
 function getPlantById(id)
 {
   return db('plants')
@@ -105,7 +104,6 @@ function getWaterById(id)
     .first()
   
 }
-
 
 function addWater(amount){
   return db('water')
@@ -131,7 +129,6 @@ function addlight(amount){
     return getLightById(lightId[0])
   })
 }
-
 
 function getLightById(id)
 {
