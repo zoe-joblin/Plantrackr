@@ -11,7 +11,6 @@ import AddSpecies from './AddSpecies'
 import Footer from './Footer' 
 
 function App (props) {
-  
   const { dispatch } = props
   useEffect(() => {
     dispatch(loadPlants())
