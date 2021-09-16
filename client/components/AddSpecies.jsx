@@ -28,13 +28,18 @@ const [newSpeciesData, setNewSpecies] = useState ({
     })
   }
 
+
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    setNewSpecies({
+    dispatch(createNewSpecies({
       [evt.target.name]: evt.target.value,
       ...newSpeciesData
-    })
+    }))
   }
+
+
+
 
   const { common, scientific, water, frequency, light, notes } = newSpeciesData
   return (
@@ -51,7 +56,6 @@ const [newSpeciesData, setNewSpecies] = useState ({
         </div>
         <div>
           <label htmlFor='name'>Water:</label>
-          <input name='name' value={water} type='text' onChange={handleChange}/>
           <select value={water} onChange={handleChange}>
             <option value={water}>Give me some drips</option>
             <option value={water}>Give me a dollop</option>

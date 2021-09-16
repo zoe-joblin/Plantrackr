@@ -18,9 +18,6 @@ function SpeciesList(props)
       </Link>)}
     </ul>
   </div>
-  <div>
-<p>form button?</p>
-  </div>
   </>
   )
 }
