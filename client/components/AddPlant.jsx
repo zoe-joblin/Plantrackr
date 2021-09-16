@@ -47,42 +47,48 @@ function AddPlant(props){
 
   return (
     <div className="base add-plant">
+    <h2>Add Plant</h2>
     <form onSubmit={handleSubmit}>
-      <label>Name:</label>
+      <label>Name </label>
       <input
         type="text"
         id="addPlantName"
         name="name"
+        placeholder="Alex"
         value={newPlantName}
         onChange={handleNameChange}
       />
       <br/>
-      <label>Note:</label>
+      <label>Note </label>
       <input
         type="text"
         id="addPlantNote"
         name="note"
+        placeholder="My fave plant etc"
         value={newPlantNote}
         onChange={handleNoteChange}
       />
       <br/>
-      <label>Picture:</label>
+      <label>Picture </label>
       <input
         type="text"
         id="addPlantImage"
         name="name"
+        placeholder="example.png"
         value={newPlantImage}
         onChange={handleImageChange}
       />
       <br/>
-              Species:
+      <label>Species </label>
         <select  onChange={e=>handleSpeciesChange(e)}>
+        <option value="" selected disabled hidden>Click here!</option>
           {
         species.map((s) => {
           return <option key={s.id}>{s.id}{s.scientific}({s.common})</option>
           })
         }
         </select>
+        <br/>
       <button>Add</button>
     </form>
     </div>
