@@ -37,4 +37,16 @@ router.delete('/:id', (req, res) => {
 })
 
 
+router.patch('/:id', (req, res) => {
+  const id = req.params.id
+  const newSpecies = req.body
+  db.updateSpecies(id, newSpecies)
+  .then((species) => {
+    //console.log("species ", species)
+      return res.json(newSpecies)
+  })
+  .catch (err => {console.log(err.message)})
+})
+
+
 module.exports = router;
