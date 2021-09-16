@@ -57,8 +57,7 @@ function Plant (props) {
       </select>
       <p> Common Name: {commonName}</p>
       <p> Light:{light}</p>
-      <p> Water amount:{water}</p>
-      <p> Water every:{water_freq}</p>
+      <p> Water amount:{water} every:{water_freq}</p>
       <p> Notes on Species: {speciesNote}</p> 
 
       <button onClick={toggleEditing}>Edit</button>
