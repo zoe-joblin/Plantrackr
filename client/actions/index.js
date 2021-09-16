@@ -23,7 +23,7 @@ export const EditPlantDetails = ( id, newPlantDetails ) => {
   return {
     type: EDIT_PLANT,
     id,
-    plant: newPlantDetails
+    name: newPlantDetails
   }
 }
 
@@ -68,14 +68,14 @@ function plantHasBeenDeleted()
   }
 }
 
-export const update = (id, plant) => {
+// export const update = (id, plant) => {
 
-  return {
-    type: 'UPDATE_PLANT',
-    id: id,
-    plant: plant
-  }
-}
+//   return {
+//     type: 'UPDATE_PLANT',
+//     id: id,
+//     plant: plant
+//   }
+// }
 
 // ----- THUNKS -----
 
@@ -129,4 +129,5 @@ export function createNewPlant (plant) {
       })
   }
 }
+
 
