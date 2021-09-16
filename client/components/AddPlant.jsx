@@ -1,8 +1,7 @@
 import React, { useState }from 'react'
 import { useEffect } from 'react'
 import { connect } from 'react-redux'
-import {createNewPlant} from '../actions'
-// import ReactDropdown from 'react-dropdown'
+import {creatNewPlant} from '../actions'
 
 function AddPlant(props){
   const { dispatch } = props
