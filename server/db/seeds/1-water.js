@@ -1,8 +1,8 @@
 exports.seed = knex => {
   return knex('water').insert([
-    { id: 0, amount: 'some drips' },
-    { id: 1, amount: 'a dollop' },
-    { id: 2, amount: 'moist' },
-    { id: 3, amount: 'soak' },
+    { id: 0, amount: 'Give me some drips' },
+    { id: 1, amount: 'Give me a dollop' },
+    { id: 2, amount: 'Moisten me' },
+    { id: 3, amount: 'Soak me' },
   ])
 }
