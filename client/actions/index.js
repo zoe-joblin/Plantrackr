@@ -1,4 +1,4 @@
-import { getPlants, updatePlant ,deletePlant, getSpecies, addSpecies } from '../api/plants'
+import { getPlants, updatePlant ,deletePlant, getSpecies, addSpecies, addPlant } from '../api/plants'
 
 
 export const SAVE_PLANTS = 'SAVE_PLANTS'

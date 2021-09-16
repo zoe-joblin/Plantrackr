@@ -4,10 +4,7 @@ import {SAVE_PLANTS, UPDATE_PLANT, PLANT_DELETED, ADD_PLANT} from '../actions'
 function reducer (state = [], action) {
   switch (action.type) {
     case ADD_PLANT:
-
-      return {
-        plants: [...state, action.plant]
-      }
+      return [...state, action.plant]
     case SAVE_PLANTS:
       return action.plants
     case UPDATE_PLANT:
