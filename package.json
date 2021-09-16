@@ -3,13 +3,17 @@
   "version": "0.2.0",
   "description": "Getting familiar with Redux and async functions",
   "main": "server/index.js",
+  "engines": {
+    "node": "14.x"
+    },
   "scripts": {
     "start": "node server",
     "dev": "run-p client server",
     "client": "webpack --watch --config client/webpack.config.js",
     "server": "nodemon server",
     "knex": "knex --knexfile server/db/knexfile.js",
-    "lint": "eslint . --ext .js,.jsx"
+    "lint": "eslint . --ext .js,.jsx",
+    "build": "webpack && knex migrate:latest"
   },
   "author": "EDA",
   "license": "ISC",
