@@ -5,7 +5,7 @@ import { createNewSpecies, loadLight, loadWater } from '../actions'
 
 
 function AddSpecies (props) {
-const {dispatch} = props
+
 const [newSpeciesData, setNewSpecies] = useState ({
   common: '',
   scientific: '',
@@ -42,10 +42,13 @@ const [newLightData, setLight] = useState ('')
   const handleSubmit = (e) => {
     e.preventDefault()
     dispatch(createNewSpecies({
-      [e.target.name]: e.target.value,
+      [evt.target.name]: evt.target.value,
       ...newSpeciesData
     }))
   }
+
+
+
 
   const { common, scientific, water, frequency, light, notes } = newSpeciesData
   return (

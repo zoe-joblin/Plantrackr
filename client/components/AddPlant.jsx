@@ -46,7 +46,7 @@ function AddPlant(props){
   // }
 
   return (
-    <>
+    <div className="base add-plant">
     <form onSubmit={handleSubmit}>
       <label>Name:</label>
       <input
@@ -56,6 +56,7 @@ function AddPlant(props){
         value={newPlantName}
         onChange={handleNameChange}
       />
+      <br/>
       <label>Note:</label>
       <input
         type="text"
@@ -64,6 +65,7 @@ function AddPlant(props){
         value={newPlantNote}
         onChange={handleNoteChange}
       />
+      <br/>
       <label>Picture:</label>
       <input
         type="text"
@@ -72,6 +74,7 @@ function AddPlant(props){
         value={newPlantImage}
         onChange={handleImageChange}
       />
+      <br/>
               Species:
         <select  onChange={e=>handleSpeciesChange(e)}>
           {
@@ -82,7 +85,7 @@ function AddPlant(props){
         </select>
       <button>Add</button>
     </form>
-    </>
+    </div>
   )
 }
 

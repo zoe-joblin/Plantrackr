@@ -8,9 +8,9 @@ import Plant from './Plant'
 import SpeciesList from './SpeciesList'
 import Species from './Species'
 import AddSpecies from './AddSpecies'
+import Footer from './Footer' 
 
 function App (props) {
-  
   const { dispatch } = props
   useEffect(() => {
     dispatch(loadPlants())
@@ -21,13 +21,16 @@ function App (props) {
 
   return (
     <div>
-      <h1><Link to='/'>PlantTrackr</Link></h1>
+      <div className="base heading"> 
+        <h1><Link to='/'>PlantTrackr</Link></h1>
+      </div>
       <Route exact path='/' component={PlantList} />
       <Route path='/plants/:id' component={Plant} />
       <Route exact path='/' component={AddPlant}/>
       <Route exact path='/species' component={SpeciesList}/>
       <Route exact path='/species' component={AddSpecies}/>
       <Route path='/species/:id' component={Species}/>
+      <Footer />
     </div>
   )
 }

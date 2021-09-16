@@ -1,41 +1,56 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import {useEffect} from 'react'
-
 import { deleteThunk, updatedPlant} from '../actions'
 
-function Plant (props) {
+function Plant (props) {  const { plants, dispatch, species } = props
 
-  const { plants, dispatch, species } = props
-  // console.log(props.species)
   const plant = plants.find(p => p.id === Number(props.match.params.id))
-  const id=plant.id;
+
+
 
   const [editing, setEditing] = useState(false)
-  const [plantName, setplantName] = useState(plant.name)
-  const [imAge, setImage] = useState(plant.img)
-  const [speCies, setSpecies] = useState(plant.species_id)
-  const [scienTific, setScientific] = useState(plant.scientific)
-  const [note, setNote] = useState(plant.note)
-  const [commonName, setCommonName] = useState(plant.common)
-  const [light, setLight] = useState(plant.light)
-  const [water, setWater] = useState(plant.water)
-  const [water_freq, setWaterFreq] = useState(plant.water_freq)
-  const [speciesNote, seSpeciesNote] = useState(plant.species_notes)
+  const [plantName, setplantName] = useState('')
+  const [imAge, setImage] = useState('')
+  const [speCies, setSpecies] = useState('')
+  const [scienTific, setScientific] = useState('')
+  const [note, setNote] = useState('')
+  const [commonName, setCommonName] = useState('')
+  const [light, setLight] = useState('')
+  const [water, setWater] = useState('')
+  const [water_freq, setWaterFreq] = useState('')
+  const [speciesNote, setSpeciesNote] = useState('')
+
+  useEffect(()=>{
+    if(plant)
+    {
+    setImage(plant.img)
+    setplantName(plant.name)
+    setSpecies(plant.id)
+    setCommonName(plant.common)
+    setNote(plant.note)
+    setScientific(plant.scientific)
+    setLight(plant.light)
+    setWater(plant.water)
+    setWaterFreq(plant.water_freq)
+    setSpeciesNote(plant.species_notes)
+    console.log(plant)
+    }
+  },[plant])
 
   const speciesChangeHandler=(e)=>{
     var selectedSpecies=species.find(s=>s.scientific===e.target.value)
-    console.log(selectedSpecies)
     setSpecies(selectedSpecies.id)
     setCommonName(selectedSpecies.common)
     setScientific(selectedSpecies.scientific)
     setLight(selectedSpecies.light)
     setWater(selectedSpecies.water)
     setWaterFreq(selectedSpecies.water_freq)
-    seSpeciesNote(selectedSpecies.notes)
+    setSpeciesNote(selectedSpecies.notes)
   }
 
   const toggleEditing = () => {
+    const id=plant.id;
      if(editing==true)
     {
       const newPlant={
@@ -46,6 +61,7 @@ function Plant (props) {
         }
         console.log(newPlant)
       dispatch(updatedPlant(id,newPlant))
+
     }
     setEditing(!editing)
   }
@@ -60,7 +76,7 @@ function Plant (props) {
 
 
   const showPlant = () => {
-    return <>
+    return <div className="base plant-details">
             <img src={`/images/${plant.img}`} style={{ maxWidth: '300px' }}/>
             <div>
             {editing?<button onClick={toggleEditing}>Save Details</button> : <button onClick={toggleEditing}>Edit Details</button>}
@@ -81,11 +97,12 @@ function Plant (props) {
             <p> How much water to give me: {water} every {water_freq} days</p>
             <p> Notes on Species: {speciesNote}</p>       
             </div>  
-    </>
+    </div>
   }
 
   return (
     <div>
+      hello!
       {plant && showPlant()}
     </div>
   )

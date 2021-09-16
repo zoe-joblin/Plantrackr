@@ -6,7 +6,7 @@ function PlantList (props) {
   const { plants, loading } = props
 
   return (
-    <div>
+    <div className="base plant-list">
       <ul>
         {plants.map(p => <Link to={`/plants/${p.id}`} key={p.id}>
           <p>{p.name}</p>

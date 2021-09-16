@@ -45,26 +45,28 @@ function Species(props) {
 
   return (
         <>
-        <div>
-          Common Name:{ediTing? <input value={comMon} onChange={commonHandler}>{comMon}</input> : <p>{species1.common}</p>}
-          Scientific Name:{ediTing? <input value={scienTific} onChange={scientificHandler}>{scienTific}</input> : <p>{species1.scientific}</p>}
-          Water Amount:{ediTing ?<select onChange={(e)=>waterHandler(e)}>
-            {
-              water.map((w)=>{
-                return <option key={w.id} >{w.id}{w.amount}</option>
-              })
-            }
-            </select> : <p>{species1.water_amount}</p>}
-          Light: {ediTing? <select onChange={(e)=>lightHandler(e)}>
-            {
-              light.map((l)=>{
-                return <option key={l.id}>{l.id}{l.amount}</option>
-              })
-            }
-            </select> : <p>{species1.light_amount}</p>}
-          Water Freq:{ediTing? <input value={waterFreq} onChange={waterfHandler}>{waterFreq}</input> : <p>{species1.water_freq}</p>}
-          Note: {ediTing? <input value={noTe} onChange={noteHandler}>{noTe}</input> : <p>{species1.notes}</p>}
-          <button onClick={submitHandler}>update</button>
+           <div>
+                <form>
+                Common Name:{ediTing? <input onChange={commonHandler}>{comMon}</input> : <p>{species1.common}</p>}
+                Scientific Name:{ediTing? <input  onChange={scientificHandler}>{scienTific}</input> : <p>{species1.scientific}</p>}
+                Water Amount:{ediTing? <select onChange={(e)=>waterHandler(e)}>
+                  {
+                    water.map((w)=>{
+                      return <option key={w.id} >{w.id}{w.amount}</option>
+                    })
+                  }
+                  </select> : <p>{species1.water_amount}</p>}
+                Light: {ediTing? <select onChange={(e)=>lightHandler(e)}>
+                  {
+                    light.map((l)=>{
+                      return <option key={l.id}>{l.id}{l.amount}</option>
+                    })
+                  }
+                  </select> : <p>{species1.light_amount}</p>}
+                Water Freq:{ediTing? <input value={waterFreq} onChange={waterfHandler}>{waterFreq}</input> : <p>{species1.water_freq}</p>}
+                Note: {ediTing? <input value={noTe} onChange={noteHandler}>{noTe}</input> : <p>{species1.notes}</p>}
+                <button onClick={submitHandler}>update</button>
+             </form>
           </div>
         </>
   )
