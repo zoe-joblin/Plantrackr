@@ -28,13 +28,6 @@ export const EditPlantDetails = ( id, newPlantDetails ) => {
   }
 }
 
-export const deletePlant = ( id ) => {
-  return {
-    type: DEL_PLANT,
-    id
-  }
-}
-
 export const savePlants = (plants) => {
   return {
     type: SAVE_PLANTS,
@@ -80,10 +73,10 @@ export const updateAction = (id, plant) => {
 }
 
 export const addSpeciesAction = (newSpecies) => {
-    return {
-      type: ADD_SPECIES,
-      species: newSpecies
-    }
+  return {
+    type: ADD_SPECIES,
+    species: newSpecies
+  }
 }
 
 // ----- THUNKS -----
@@ -141,9 +134,9 @@ export function createNewPlant (plant) {
 
 export function createNewSpecies (species) {
   return (dispatch) => {
-    addSpecies(newSpecies)
+    addSpecies(species)
       .then((newId) => {
-        dispatch(addSpeciesAction ({ id: newId, species}))
+        dispatch(addSpeciesAction ({ id: newId, ...species}))
       })
     }
 }

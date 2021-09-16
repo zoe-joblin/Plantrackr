@@ -7,9 +7,9 @@ function reducer (state = [], action) {
     case ADD_SPECIES:
       return [...state, action.species]
 
-      default:
-        return state
-      }
+    default:
+      return state
     }
+  }
     
-    export default reducer
+  export default reducer
