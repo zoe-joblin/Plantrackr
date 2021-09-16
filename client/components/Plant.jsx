@@ -44,22 +44,16 @@ function Plant (props) {
   const showPlant = () => {
     return <>
       <img src={`/images/${plant.img}`} style={{ maxWidth: '300px' }}/>
-      Plant Name: <p value={plantName} onChange={(e)=>nameChangeHandler(e)}></p>
-      Note: <p value={note} onChange={(e)=>noteChangeHandler(e)}></p>
-      <select onChange={(e)=>speciesChangeHandler(e)}>
-      {
-        species.map((s)=>{
-          return <option key={s.id} value={s.scientific} >{s.scientific}({s.common})</option>
-        })
-      }
-      </select>
-      <p> Common Name: {commonName}</p>
-      <p> Preferred amount of light: {light}</p>
-      <p> Water amount: {water} every {water_freq} days</p>
-      <p> Notes on Species: {speciesNote}</p> 
+      <h3>{plant.name}</h3>
+      <p>{plant.common} | {plant.scientific}</p>
+      <p>Light: {plant.light}</p>
+      <p>Water: {plant.water} and make sure it happens every {plant.water_freq} days</p>
+      <p>Personal notes about {plant.name}: {plant.note}</p>
+      <p>Notes on Species: {plant.species_notes}</p>
 
-      <button onClick={toggleEditing}>Edit</button>
-
+      <button onClick={editPlant}>Edit</button>
+      {/* <button onClick={() => setEditing(plant.id)}>Edit</button> */} {/* toggle editing  */}
+      {/* <button onClick={() => dispatch(updatedPlant(plant, newPlant))}>Edit</button> */}
       <button onClick={() => dispatch(deleteThunk(plant.id))}>Delete</button>
     </>
   }

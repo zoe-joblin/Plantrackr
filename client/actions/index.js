@@ -21,6 +21,7 @@ export const addPlantAction = (newPlant) => {
   }
 }
 
+
 export const EditPlantDetails = ( id, newPlantDetails ) => {
   return {
     type: EDIT_PLANT,
@@ -66,8 +67,8 @@ export const errMessage = (message) => {
     message
   }
 }
-
-export const deleteAction = (id) => {
+export const deleteAction = (id) =>
+{
   return {
     type: PLANT_DELETED,
     id
@@ -126,9 +127,9 @@ export function loadSpecies () {
 
 export function updatedPlant (id, newPlantObject) {
   return (dispatch) => {
-    updatePlant(id, newPlantObject)
+    updatePlant(id, newPlantDetails)
       .then((newPlant) => {
-        dispatch(updateAction(id, newPlantObject))
+        dispatch(updateAction(newPlant))
       })
   }
   
@@ -142,16 +143,6 @@ export function createNewPlant (plant) {
       })
   }
 }
-
-export function createNewSpecies (species) {
-  return (dispatch) => {
-    addSpecies(species)
-      .then((newId) => {
-        dispatch(addSpeciesAction ({ id: newId, ...species}))
-      })
-    }
-}
-
 
 export function deleteThunk (id) {
   return (dispatch) => {
