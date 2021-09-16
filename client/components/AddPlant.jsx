@@ -1,7 +1,7 @@
 import React, { useState }from 'react'
 import { useEffect } from 'react'
 import { connect } from 'react-redux'
-import {creatNewPlant} from '../actions'
+import {createNewPlant} from '../actions'
 
 function AddPlant(props){
   const { dispatch } = props
