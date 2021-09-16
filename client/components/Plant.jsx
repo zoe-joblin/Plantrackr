@@ -7,7 +7,7 @@ function Plant (props) {
   const { plants, dispatch } = props
   const plant = plants.find(p => p.id === Number(props.match.params.id))
 
-  // const [editing, setEditing] = useState(false)
+  // const [editing, setEditing] = useState(false)     {/* toggle editing  */}
   const [newPlant, setNewPlant] = useState(plant)
 
   // const toggleEditing = () => {
@@ -32,6 +32,8 @@ function Plant (props) {
       <p>Notes on Species: {plant.species_notes}</p>
 
       <button onClick={editPlant}>Edit</button>
+      {/* <button onClick={() => setEditing(plant.id)}>Edit</button> */} {/* toggle editing  */}
+      {/* <button onClick={() => dispatch(updatedPlant(plant, newPlant))}>Edit</button> */}
       <button onClick={() => dispatch(deleteThunk(plant.id))}>Delete</button>
     </>
   }
@@ -39,6 +41,7 @@ function Plant (props) {
   return (
     <div>
       {plant && showPlant()}
+      {/* {editPlant} */}
     </div>
   )
 }

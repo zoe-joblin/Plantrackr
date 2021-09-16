@@ -10,6 +10,7 @@ export const ADD_PLANT = 'ADD_PLANT'
 export const PLANT_DELETED = 'PLANT_DELETED'
 export const ADD_SPECIES = 'ADD_SPECIES'
 
+// export const EDIT_PLANT = 'EDIT_PLANT'
 
 // ----- ACTION CREATORS -----
 
@@ -27,6 +28,20 @@ export const EditPlantDetails = ( id, newPlantDetails ) => {
     name: newPlantDetails
   }
 }
+// export const EditPlantDetails = ( id, newPlantDetails ) => {
+//   return {
+//     type: EDIT_PLANT,
+//     id,
+//     name: newPlantDetails
+//   }
+// }
+
+// export const deletePlant = ( id ) => {
+//   return {
+//     type: DEL_PLANT,
+//     id
+//   }
+// }
 
 export const savePlants = (plants) => {
   return {
@@ -34,20 +49,17 @@ export const savePlants = (plants) => {
     plants
   }
 }
-
 export const saveSpecies = (species) => {
   return {
     type: SAVE_SPECIES,
     species
   }
 }
-
 export const loading = () => {
   return {
     type: LOADING
   }
 }
-
 export const errMessage = (message) => {
   return {
     type: ERROR,
@@ -61,14 +73,16 @@ export const deleteAction = (id) => {
     id
   }
 }
-
-
 export const updateAction = (id, plant) => {
 
   return {
     type: UPDATE_PLANT,
     id: id,
-    plant: plant
+    name: plant.name,
+    species: plant.species,
+    img:
+    plant.img,
+    note: plant.note
   }
 }
 
@@ -110,11 +124,11 @@ export function loadSpecies () {
   }
 }
 
-export function updatedPlant (id, newPlantDetails) {
+export function updatedPlant (id, newPlantObject) {
   return (dispatch) => {
-    updatePlant(id, newPlantDetails)
-      .then((output) => {
-        dispatch(updateAction(id, newPlantDetails))
+    updatePlant(id, newPlantObject)
+      .then((newPlant) => {
+        dispatch(updateAction(id, newPlantObject))
       })
   }
   
@@ -123,11 +137,8 @@ export function updatedPlant (id, newPlantDetails) {
 export function createNewPlant (plant) {
   return (dispatch) => {
     addPlant(plant)
-      .then((newId) => {
-        dispatch(addPlantAction({ id: newId, plant }))
-      })
-      .catch(err => {
-        dispatch(errorHappened(err.message))
+      .then((plant) => {
+        dispatch(addPlantAction( plant ))
       })
   }
 }
