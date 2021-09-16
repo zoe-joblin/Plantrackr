@@ -7,6 +7,7 @@ import PlantList from './PlantList'
 import Plant from './Plant'
 import SpeciesList from './SpeciesList'
 import Species from './Species'
+import AddSpecies from './AddSpecies'
 
 function App (props) {
   const { dispatch } = props
@@ -23,6 +24,7 @@ function App (props) {
       <Route path='/plants/:id' component={Plant} />
       <Route exact path='/' component={AddPlant}/>
       <Route exact path='/species' component={SpeciesList}/>
+      <Route exact path='/species' component={AddSpecies}/>
       <Route path='/species/:id' component={Species}/>
     </div>
   )
