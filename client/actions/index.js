@@ -8,6 +8,7 @@ export const ERROR = 'ERROR'
 export const UPDATE_PLANT = 'UPDATE_PLANT'
 export const ADD_PLANT = 'ADD_PLANT'
 export const PLANT_DELETED = 'PLANT_DELETED'
+export const EDIT_PLANT = 'EDIT_PLANT'
 
 // ----- ACTION CREATORS -----
 
@@ -17,6 +18,23 @@ export const addPlantAction = (newPlant) => {
     plant: newPlant
   }
 }
+
+
+export const EditPlantDetails = ( id, newPlantDetails ) => {
+  return {
+    type: EDIT_PLANT,
+    id,
+    name: newPlantDetails
+  }
+}
+
+// export const deletePlant = ( id ) => {
+//   return {
+//     type: DEL_PLANT,
+//     id
+//   }
+// }
+
 export const savePlants = (plants) => {
   return {
     type: SAVE_PLANTS,
