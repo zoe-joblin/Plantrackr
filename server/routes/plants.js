@@ -37,7 +37,6 @@ router.post('/', (req,res) => {
 
 })
 
-
 router.delete('/:id', (req, res) => {
   const id = req.params.id
   db.deletePlant(id)
@@ -53,8 +52,8 @@ router.patch('/:id', (req, res) => {
   const newPlant = req.body
   db.updatePlant(id, newPlant)
   .then(plant => {
-    //console.log("updatePlant", plant)
-    return res.json(newPlant)
+    // console.log(plant)
+    return res.json({updated:plant})
   })
 }) 
 

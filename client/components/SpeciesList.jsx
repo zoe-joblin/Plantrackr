@@ -7,9 +7,10 @@ import {Link} from 'react-router-dom'
 
 function SpeciesList(props)
 {
-  var species = props.species
+  var {species} = props
   console.log(species)
   return (
+    <>
     <div>
     <ul>
       {species.map(s => <Link to={`/species/${s.id}`} key={s.id}>
@@ -17,6 +18,7 @@ function SpeciesList(props)
       </Link>)}
     </ul>
   </div>
+  </>
   )
 }
 

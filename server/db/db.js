@@ -78,13 +78,11 @@ function addPlant(plant)
     return db('plants')
     .insert(plant)
     .then(plantId => {
-
       console.log("plant id", plantId)
       return getPlantById(plantId[0])
     })
     
 }
-
 
 function getPlantById(id)
 {
@@ -96,22 +94,32 @@ function getPlantById(id)
 function getAllSpecies()
 {
   return db('species')
+  .join('water','species.water','water.id')
+  .join('light','species.light','light.id')
+  .select('species.id',
+  'common',
+  'scientific',
+  'water.id as water_id',
+  'light.id as light_id',
+  'water.amount as water_amount',
+  'light.amount as light_amount',
+  'water_freq',
+  'notes'
+  )
 }
+
 
 function getWaterById(id)
 {
     return db('water')
     .where('id', id)
     .first()
-  
 }
-
 
 function addWater(amount){
   return db('water')
   .insert(amount)
   .then(waterId => {
-
     return getWaterById(waterId[0])
   })
 }
@@ -132,22 +140,13 @@ function addlight(amount){
   })
 }
 
-
 function getLightById(id)
 {
     return db('light')
     .where('id', id)
-    .first()
-  
+    .first()  
 }
 
-function getSpeciesById(id)
-{
-    return db('species')
-    .where('id', id)
-    .first()
-  
-}
 
 
 function deletePlant(id)
@@ -166,6 +165,57 @@ function updatePlant(id, newPlant)
 }
 
 
+function getSpeciesById(id)
+{
+    return db('species')
+    .where('id', id)
+    .first()
+  
+}
+
+
+function addSpecies (species) 
+{
+ return db('species')
+ .insert(species)
+ .then(id => {
+   return getSpeciesById(id[0])
+ })
+
+}
+
+
+function deletePlantBySpeciesId (speciesId) 
+{
+  return db('plants')
+  .where('plants.species', speciesId)
+}
+
+function deleteSpecies(id) 
+{ 
+  deletePlantBySpeciesId(id)
+  return db('species')
+  .where('id', id)
+  .del()
+}
+
+
+function updateSpecies(id, newSpecies)
+{
+  return db('species')
+  .where('id', id)
+  .update(newSpecies)
+}
+
+function getWater()
+{
+  return db('water')
+}
+
+function getLight()
+{
+  return db('light')
+}
 
 module.exports = {
   getPlants,
@@ -181,5 +231,10 @@ module.exports = {
   getWaterById,
   getAllSpecies,
   deletePlant,
-  updatePlant
+  updatePlant,
+  deleteSpecies,
+  deletePlantBySpeciesId,
+  updateSpecies,
+  getWater,
+  getLight,
 }
