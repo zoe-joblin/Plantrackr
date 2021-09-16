@@ -38,6 +38,20 @@ export const updatePlant = (id, newDetails) => {
 
 export const getSpecies=()=>{
   return request
-  .get(`api/v1/species`)
+  .get(`/api/v1/species`)
   .then(res=>res.body)
+}
+
+// routes.js
+// POST -> 
+// db.addSpecies(newSpecies)
+// .then(idArr => {
+//  res.json({ id: idArr[0] }) <- res.body
+// })
+
+export const addSpecies = (newSpecies) => {
+  return request 
+  .post ('/api/v1/species')
+  .send (newSpecies)
+  .then (res => res.body.id)
 }
