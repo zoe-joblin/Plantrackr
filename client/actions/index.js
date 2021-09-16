@@ -20,6 +20,21 @@ export const addPlantAction = (newPlant) => {
   }
 }
 
+export const EditPlantDetails = ( id, newPlantDetails ) => {
+  return {
+    type: EDIT_PLANT,
+    id,
+    name: newPlantDetails
+  }
+}
+
+export const deletePlant = ( id ) => {
+  return {
+    type: DEL_PLANT,
+    id
+  }
+}
+
 export const savePlants = (plants) => {
   return {
     type: SAVE_PLANTS,
@@ -54,6 +69,7 @@ export const deleteAction = (id) => {
   }
 }
 
+
 export const updateAction = (id, plant) => {
 
   return {
@@ -63,12 +79,15 @@ export const updateAction = (id, plant) => {
   }
 }
 
+<<<<<<< HEAD
 export const addSpeciesAction = (newSpecies) => {
     return {
       type: ADD_SPECIES,
       species: newSpecies
     }
 }
+=======
+>>>>>>> 91c9fc093021ee7931327ad6b83af65cece6fe4a
 
 // ----- THUNKS -----
 
@@ -133,8 +152,6 @@ export function createNewSpecies (species) {
 }
 
 
-
-
 export function deleteThunk (id) {
   return (dispatch) => {
     deletePlant(id)
@@ -143,3 +160,4 @@ export function deleteThunk (id) {
       })
   }
 }
+
