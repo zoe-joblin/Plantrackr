@@ -60,7 +60,7 @@ function Plant (props) {
 
 
   const showPlant = () => {
-    return <>
+    return <div className="base plant-details">
             <img src={`/images/${plant.img}`} style={{ maxWidth: '300px' }}/>
             <div>
             {editing?<button onClick={toggleEditing}>Save Details</button> : <button onClick={toggleEditing}>Edit Details</button>}
@@ -81,7 +81,7 @@ function Plant (props) {
             <p> How much water to give me: {water} every {water_freq} days</p>
             <p> Notes on Species: {speciesNote}</p>       
             </div>  
-    </>
+    </div>
   }
 
   return (
