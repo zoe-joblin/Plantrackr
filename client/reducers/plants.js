@@ -36,14 +36,12 @@ function reducer (state = [], action) {
 function updatePlant(plantArray, action){
 
   const plants = plantArray.map(eachPlant => {
-
     if(eachPlant.id === action.id)
     {
         eachPlant.name = action.name
         eachPlant.species = action.species
         eachPlant.img = action.img
         eachPlant.note = action.note
-
         return eachPlant
 
     }

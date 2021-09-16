@@ -80,8 +80,7 @@ export const updateAction = (id, plant) => {
     id: id,
     name: plant.name,
     species: plant.species,
-    img:
-    plant.img,
+    img: plant.img,
     note: plant.note
   }
 }
@@ -127,12 +126,29 @@ export function loadSpecies () {
 export function updatedPlant (id, newPlantObject) {
   return (dispatch) => {
     updatePlant(id, newPlantObject)
-      .then((newPlant) => {
+      .then((output) => {
+       if (!output.updated) throw new Error('Not updated')
         dispatch(updateAction(id, newPlantObject))
       })
+      .catch(err => {
+        dispatch(errMessage(err.message))
+       })
   }
-  
 }
+
+
+// export function updateWombatName (wombat, newName) {
+//   return (dispatch) => {
+//     updateName(wombat.id, newName)
+//       .then((output) => {
+//         if (!output.updated) throw new Error('Not updated')
+//         dispatch(updateWom(wombat.name, newName))
+//       })
+//       .catch(err => {
+//         dispatch(errorHappened(err.message))
+//       })
+//   }
+// }
 
 export function createNewPlant (plant) {
   return (dispatch) => {
