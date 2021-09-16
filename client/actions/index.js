@@ -1,4 +1,4 @@
-import { getPlants, getOnePlant, updatePlant ,deleteThePlant, getSpecies, addSpecies} from '../api/plants'
+import { getPlants, updatePlant ,deletePlant, getSpecies, addSpecies } from '../api/plants'
 
 
 export const SAVE_PLANTS = 'SAVE_PLANTS'
@@ -47,8 +47,7 @@ export const errMessage = (message) => {
   }
 }
 
-export const deleteAction = (id) =>
-{
+export const deleteAction = (id) => {
   return {
     type: PLANT_DELETED,
     id
@@ -64,7 +63,7 @@ export const updateAction = (id, plant) => {
   }
 }
 
-const addSpecies = (newSpecies) => {
+export const addSpeciesAction = (newSpecies) => {
     return {
       type: ADD_SPECIES,
       species: newSpecies
@@ -128,8 +127,10 @@ export function createNewSpecies (species) {
   return (dispatch) => {
     addSpecies(newSpecies)
       .then((newId) => {
-        dispatch(addSpecies ({ id: newId, species}))
+        dispatch(addSpeciesAction ({ id: newId, species}))
       })
+    }
+}
 
 
 
