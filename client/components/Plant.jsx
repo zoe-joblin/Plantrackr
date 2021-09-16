@@ -83,26 +83,26 @@ function Plant (props) {  const { plants, dispatch, species } = props
             {editing?<button type='button' disabled>Delete Plant</button> : <button onClick={() => dispatch(deleteThunk(plant.id))}>Delete Plant</button>}
             </div>
             <div>
-            Plant Name: {editing?<input value={plantName} onChange={(e)=>nameChangeHandler(e)}></input> : <p>{plantName}</p>}
-            Note: {editing? <input value={note} onChange={(e)=>noteChangeHandler(e)}></input> : <p>{note}</p>}
-            {editing ?<select onChange={(e)=>speciesChangeHandler(e)}>
+            <strong>Plant Name: </strong> {editing?<><input value={plantName} onChange={(e)=>nameChangeHandler(e)}></input><br/></> : <p>{plantName}</p>}
+            <strong>Note: </strong> {editing?<><input value={note} onChange={(e)=>noteChangeHandler(e)}></input><br/></> : <p>{note}</p>}
+            <strong>Species: </strong> {editing ?<select onChange={(e)=>speciesChangeHandler(e)}>
+            
             {
               species.map((s)=>{
                 return <option key={s.id} value={s.scientific}>{s.scientific}({s.common})</option>
               })
             }
-            </select> : <p>Species: {scienTific}</p>}
-            <p> Common Name: {commonName}</p>
-            <p> Preferred amount of light: {light}</p>
-            <p> How much water to give me: {water} every {water_freq} days</p>
-            <p> Notes on Species: {speciesNote}</p>       
+            </select> : <p>{scienTific}</p>}
+            <p> <strong>Common Name:</strong><br/> {commonName}</p>
+            <p> <strong>Preferred amount of light:</strong><br/> {light}</p>
+            <p> <strong>How much water to give me:</strong><br/> {water} every {water_freq} days</p>
+            <p> <strong>Notes on Species:</strong><br/> {speciesNote}</p>       
             </div>  
     </div>
   }
 
   return (
     <div>
-      hello!
       {plant && showPlant()}
     </div>
   )

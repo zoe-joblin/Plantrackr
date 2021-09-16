@@ -64,6 +64,7 @@ function AddPlant(props){
         type="text"
         id="addPlantNote"
         name="note"
+        placeholder="My fave plant etc"
         value={newPlantNote}
         onChange={handleNoteChange}
       />
@@ -73,7 +74,7 @@ function AddPlant(props){
         type="text"
         id="addPlantImage"
         name="name"
-        placeholder=""
+        placeholder="example.png"
         value={newPlantImage}
         onChange={handleImageChange}
       />

@@ -34,9 +34,14 @@ body, html {
 }
 
 .logo{
-  padding-top: 21px;
-  max-height: 6vw;
+  padding-top: 0px;
+  max-height: 58px;
   float: left;
+}
+
+.header-container {
+  display: flex;
+  justify-content: center;
 }
 
 .plant-list {
@@ -116,7 +121,7 @@ a {
 }
 
 .plant-details p {
-  margin: 8px 20px;
+  margin: 12px 20px;
 }
 
 .plant-details button {

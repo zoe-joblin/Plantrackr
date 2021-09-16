@@ -22,9 +22,11 @@ function App (props) {
   return (
     <div>
       <div className="base heading"> 
-      <img className='logo' src='/images/planticon.png'/>
-      <Link to='/'><h1>PlantTrackr</h1>
-      </Link>
+        <Link to='/'>
+        <div class='header-container'><img className='logo' src='/images/planticon.png'/>
+        <h1>PlantTrackr</h1>
+        </div>
+        </Link>
       </div>
       <Route exact path='/' component={PlantList} />
       <Route path='/plants/:id' component={Plant} />
