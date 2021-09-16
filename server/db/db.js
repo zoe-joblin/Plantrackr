@@ -97,6 +97,7 @@ function getAllSpecies()
   return db('species')
 }
 
+
 function getWaterById(id)
 {
     return db('water')
@@ -191,6 +192,13 @@ function deleteSpecies(id)
 }
 
 
+function updateSpecies(id, newSpecies)
+{
+  return db('species')
+  .where('id', id)
+  .update(newSpecies)
+}
+
 
 module.exports = {
   getPlants,
@@ -208,5 +216,6 @@ module.exports = {
   deletePlant,
   updatePlant,
   deleteSpecies,
-  deletePlantBySpeciesId
+  deletePlantBySpeciesId,
+  updateSpecies
 }
