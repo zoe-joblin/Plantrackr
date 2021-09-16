@@ -11,9 +11,12 @@
     "dev": "run-p client server",
     "client": "webpack --watch --config client/webpack.config.js",
     "server": "nodemon server",
-    "knex": "knex --knexfile server/db/knexfile.js",
     "lint": "eslint . --ext .js,.jsx",
-    "build": "webpack && knex migrate:latest"
+    "build": "run-p build:client build:server",
+    "build:client": "npm run webpack -- --mode production",
+    "build:server": "npm run knex -- migrate:latest",
+    "webpack": "webpack --config ./client/webpack.config.js",
+    "knex": "knex --knexfile ./server/db/knexfile.js"
   },
   "author": "EDA",
   "license": "ISC",
