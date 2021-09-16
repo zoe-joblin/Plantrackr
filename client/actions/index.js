@@ -1,9 +1,5 @@
-
-<<<<<<< HEAD
 import { getPlants, getOnePlant, updatePlant ,deleteThePlant, getSpecies, addSpecies} from '../api/plants'
-=======
-import { getPlants, getOnePlant, addPlant, updatePlant ,deletePlant, getSpecies} from '../api/plants'
->>>>>>> f28bb11ac6e2da435456abadeb096fcf5931a463
+
 
 export const SAVE_PLANTS = 'SAVE_PLANTS'
 export const SAVE_SPECIES = 'SAVE_SPECIES'
@@ -12,6 +8,7 @@ export const ERROR = 'ERROR'
 export const UPDATE_PLANT = 'UPDATE_PLANT'
 export const ADD_PLANT = 'ADD_PLANT'
 export const PLANT_DELETED = 'PLANT_DELETED'
+export const ADD_SPECIES = 'ADD_SPECIES'
 
 
 // ----- ACTION CREATORS -----
@@ -67,9 +64,9 @@ export const updateAction = (id, plant) => {
   }
 }
 
-export const addSpecies = (newSpecies) => {
+const addSpecies = (newSpecies) => {
     return {
-      type: 'ADD_SPECIES',
+      type: ADD_SPECIES,
       species: newSpecies
     }
 }
@@ -127,10 +124,16 @@ export function createNewPlant (plant) {
   }
 }
 
-export function createNewSpecies (newSpecies) {
+export function createNewSpecies (species) {
   return (dispatch) => {
     addSpecies(newSpecies)
-      .then(())
+      .then((newId) => {
+        dispatch(addSpecies ({ id: newId, species}))
+      })
+
+
+
+
 export function deleteThunk (id) {
   return (dispatch) => {
     deletePlant(id)
