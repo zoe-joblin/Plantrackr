@@ -38,7 +38,7 @@ function updatePlant(plantArray,  action){
     return location.reload()
   }
   const plants = plantArray.map(eachPlant => {
-    console.log("each plant", eachPlant)
+    console.log("each plant"+eachPlant)
     if(eachPlant.id === action.id)
     {
         eachPlant.name = action.name

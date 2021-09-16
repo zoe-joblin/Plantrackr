@@ -5,6 +5,7 @@ import {useEffect} from 'react'
 import { deleteThunk, updatedPlant} from '../actions'
 
 function Plant (props) {
+  console.log(props.species)
   const { plants, dispatch, species } = props
   const plant = plants.find(p => p.id === Number(props.match.params.id))
   const id=plant.id;
@@ -23,14 +24,14 @@ function Plant (props) {
 
   const speciesChangeHandler=(e)=>{
     var selectedSpecies=species.find(s=>s.scientific===e.target.value)
-    console.log(e.target.value)
+    console.log(selectedSpecies)
     setSpecies(selectedSpecies.id)
     setCommonName(selectedSpecies.common)
     setScientific(selectedSpecies.scientific)
     setLight(selectedSpecies.light)
     setWater(selectedSpecies.water)
     setWaterFreq(selectedSpecies.water_freq)
-    seSpeciesNote(selectedSpecies.note)
+    seSpeciesNote(selectedSpecies.notes)
   }
 
   const toggleEditing = () => {

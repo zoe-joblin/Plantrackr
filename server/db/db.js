@@ -95,6 +95,18 @@ function getPlantById(id)
 function getAllSpecies()
 {
   return db('species')
+  .join('water','species.water','water.id')
+  .join('light','species.light','light.id')
+  .select('species.id',
+  'common',
+  'scientific',
+  'water.id as water_id',
+  'light.id as light_id',
+  'water.amount as water_amount',
+  'light.amount as light_amount',
+  'water_freq',
+  'notes'
+  )
 }
 
 
@@ -103,7 +115,6 @@ function getWaterById(id)
     return db('water')
     .where('id', id)
     .first()
-  
 }
 
 function addWater(amount){

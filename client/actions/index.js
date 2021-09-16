@@ -80,7 +80,6 @@ export const updateAction = (id, plant) => {
     type: UPDATE_PLANT,
     id: id,
     name: plant.name,
-
     species: plant.species,
     img: plant.img,
     note: plant.note
