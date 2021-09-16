@@ -1,4 +1,7 @@
-import { getPlants, updatePlant ,deletePlant, getSpecies, addSpecies } from '../api/plants'
+
+
+import { getPlants, updatePlant ,deletePlant, getSpecies, addSpecies, addPlant } from '../api/plants'
+
 
 
 export const SAVE_PLANTS = 'SAVE_PLANTS'
@@ -20,7 +23,6 @@ export const addPlantAction = (newPlant) => {
     plant: newPlant
   }
 }
-
 
 export const EditPlantDetails = ( id, newPlantDetails ) => {
   return {
@@ -67,8 +69,8 @@ export const errMessage = (message) => {
     message
   }
 }
-export const deleteAction = (id) =>
-{
+
+export const deleteAction = (id) => {
   return {
     type: PLANT_DELETED,
     id
@@ -87,12 +89,14 @@ export const updateAction = (id, plant) => {
   }
 }
 
+
 export const addSpeciesAction = (newSpecies) => {
   return {
     type: ADD_SPECIES,
     species: newSpecies
   }
 }
+
 
 // ----- THUNKS -----
 
@@ -127,9 +131,9 @@ export function loadSpecies () {
 
 export function updatedPlant (id, newPlantObject) {
   return (dispatch) => {
-    updatePlant(id, newPlantDetails)
+    updatePlant(id, newPlantObject)
       .then((newPlant) => {
-        dispatch(updateAction(newPlant))
+        dispatch(updateAction(id, newPlantObject))
       })
   }
   
@@ -143,6 +147,16 @@ export function createNewPlant (plant) {
       })
   }
 }
+
+export function createNewSpecies (species) {
+  return (dispatch) => {
+    addSpecies(species)
+      .then((newId) => {
+        dispatch(addSpeciesAction ({ id: newId, ...species}))
+      })
+    }
+}
+
 
 export function deleteThunk (id) {
   return (dispatch) => {
