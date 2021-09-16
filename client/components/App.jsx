@@ -10,7 +10,6 @@ import Species from './Species'
 import AddSpecies from './AddSpecies'
 
 function App (props) {
-  
   const { dispatch } = props
   useEffect(() => {
     dispatch(loadPlants())
