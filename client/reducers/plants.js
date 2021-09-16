@@ -30,7 +30,7 @@ function reducer (state = [], action) {
       }
   }
     
-function updatePlant(plantArray,  ){
+function updatePlant(plantArray,  action){
 
   if(!action.img || !action.note || !action.name || !action.species || !action.id)
   {
