@@ -1,5 +1,5 @@
 
-import { getPlants, getOnePlant, updatePlant ,deleteThePlant, getSpecies} from '../api/plants'
+import { getPlants, getOnePlant, updatePlant ,deleteThePlant, getSpecies, addSpecies} from '../api/plants'
 
 export const SAVE_PLANTS = 'SAVE_PLANTS'
 export const SAVE_SPECIES = 'SAVE_SPECIES'
@@ -9,6 +9,7 @@ export const ERROR = 'ERROR'
 export const EDIT_PLANT = 'EDIT_PLANT'
 export const ADD_PLANT = 'ADD_PLANT'
 export const DEL_PLANT = 'DEL_PLANT'
+
 
 // ----- ACTION CREATORS -----
 
@@ -77,6 +78,13 @@ export const update = (id, plant) => {
   }
 }
 
+export const addSpecies = (newSpecies) => {
+    return {
+      type: 'ADD_SPECIES',
+      species: newSpecies
+    }
+}
+
 // ----- THUNKS -----
 
 export function loadPlants () {
@@ -130,3 +138,10 @@ export function createNewPlant (plant) {
   }
 }
 
+
+export function createNewSpecies (newSpecies) {
+  return (dispatch) => {
+    addSpecies(newSpecies)
+      .then(())
+  }
+}

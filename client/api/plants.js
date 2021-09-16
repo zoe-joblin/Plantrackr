@@ -42,3 +42,11 @@ export const getSpecies=()=>{
   .get(`api/v1/species`)
   .then(res=>res.body)
 }
+
+
+export const addSpecies = (newSpecies) => {
+  return request 
+  .post ('api/v1/species')
+  .send (newSpecies)
+  .then (res => res.body)
+}
