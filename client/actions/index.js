@@ -1,24 +1,23 @@
 
-import { getPlants, getOnePlant, updatePlant ,deleteThePlant, getSpecies} from '../api/plants'
+import { getPlants, getOnePlant, addPlant, updatePlant ,deletePlant, getSpecies} from '../api/plants'
 
 export const SAVE_PLANTS = 'SAVE_PLANTS'
 export const SAVE_SPECIES = 'SAVE_SPECIES'
 export const LOADING = 'LOADING'
 export const ERROR = 'ERROR'
-
-export const EDIT_PLANT = 'EDIT_PLANT'
+export const UPDATE_PLANT = 'UPDATE_PLANT'
 export const ADD_PLANT = 'ADD_PLANT'
-export const DEL_PLANT = 'DEL_PLANT'
+export const PLANT_DELETED = 'PLANT_DELETED'
 
 // ----- ACTION CREATORS -----
 
-
-export const addNewPlant = (newPlant) => {
+export const addPlantAction = (newPlant) => {
   return {
     type: ADD_PLANT,
     plant: newPlant
   }
 }
+
 export const EditPlantDetails = ( id, newPlantDetails ) => {
   return {
     type: EDIT_PLANT,
@@ -61,21 +60,24 @@ export const errMessage = (message) => {
   }
 }
 
-function plantHasBeenDeleted()
+export const deleteAction = (id) =>
 {
   return {
-    type: PLANT_DELETED
+    type: PLANT_DELETED,
+    id
   }
 }
 
-// export const update = (id, plant) => {
 
-//   return {
-//     type: 'UPDATE_PLANT',
-//     id: id,
-//     plant: plant
-//   }
-// }
+export const updateAction = (id, plant) => {
+
+  return {
+    type: UPDATE_PLANT,
+    id: id,
+    plant: plant
+  }
+}
+
 
 // ----- THUNKS -----
 
@@ -112,7 +114,7 @@ export function updatedPlant (id, newPlantDetails) {
   return (dispatch) => {
     updatePlant(id, newPlantDetails)
       .then((output) => {
-        dispatch(EditPlantDetails(id, newPlantDetails))
+        dispatch(updateAction(id, newPlantDetails))
       })
   }
   
@@ -122,7 +124,7 @@ export function createNewPlant (plant) {
   return (dispatch) => {
     addPlant(plant)
       .then((newId) => {
-        dispatch(addNewPlant({ id: newId, plant }))
+        dispatch(addPlantAction({ id: newId, plant }))
       })
       .catch(err => {
         dispatch(errorHappened(err.message))
@@ -130,4 +132,13 @@ export function createNewPlant (plant) {
   }
 }
 
+
+export function deleteThunk (id) {
+  return (dispatch) => {
+    deletePlant(id)
+      .then(() => {
+        dispatch(deleteAction(id))
+      })
+  }
+}
 

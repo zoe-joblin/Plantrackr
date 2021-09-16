@@ -1,5 +1,5 @@
 
-import {SAVE_PLANTS, EDIT_PLANT, DEL_PLANT, ADD_PLANT} from '../actions'
+import {SAVE_PLANTS, EDIT_PLANT, PLANT_DELETED, ADD_PLANT} from '../actions'
 
 function reducer (state = [], action) {
   switch (action.type) {
@@ -7,10 +7,10 @@ function reducer (state = [], action) {
       return {
         plants: [...state, action.plant]
       }
-    case 'DEL_PLANT':
-      return {
-        plants: [state.plants.filter((plantId) => plantId !== action.id)]
-      }
+//     case 'DEL_PLANT':
+//       return {
+//         plants: [state.plants.filter((plantId) => plantId !== action.id)]
+//       }
     case 'SAVE_PLANTS':
       return action.plants
     case 'EDIT_PLANT':
@@ -18,6 +18,9 @@ function reducer (state = [], action) {
       plantToUpdate = action.plant
       console.log("update plant", plantToUpdate)
       return [...state]
+
+    case PLANT_DELETED:
+        return state.filter((plant) => plant.id !== action.id)
     default:
         return state
       }
@@ -25,4 +28,4 @@ function reducer (state = [], action) {
     
     export default reducer
     
-    // case DELETE_PLANT:
+   

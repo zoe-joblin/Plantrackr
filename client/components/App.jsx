@@ -5,6 +5,8 @@ import AddPlant from './AddPlant'
 import { loadPlants,loadSpecies } from '../actions'
 import PlantList from './PlantList'
 import Plant from './Plant'
+import SpeciesList from './SpeciesList'
+import Species from './Species'
 
 function App (props) {
   const { dispatch } = props
@@ -19,7 +21,9 @@ function App (props) {
       <h1><Link to='/'>PlantTrackr</Link></h1>
       <Route exact path='/' component={PlantList} />
       <Route path='/plants/:id' component={Plant} />
-      <Route path='/' component={AddPlant}/>
+      <Route exact path='/' component={AddPlant}/>
+      <Route exact path='/species' component={SpeciesList}/>
+      <Route path='/species/:id' component={Species}/>
     </div>
   )
 }
