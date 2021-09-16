@@ -165,6 +165,13 @@ function updatePlant(id, newPlant)
   .update(newPlant)
 }
 
+function deleteSpecies(id) 
+{
+  return db('species')
+  .where('species.id as species_id', id)
+  .del()
+}
+
 
 
 module.exports = {
@@ -181,5 +188,6 @@ module.exports = {
   getWaterById,
   getAllSpecies,
   deletePlant,
-  updatePlant
+  updatePlant,
+  deleteSpecies
 }

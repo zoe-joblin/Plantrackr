@@ -34,22 +34,24 @@ function reducer (state = [], action) {
 
 function updatePlant(plantArray, action){
 
+  if(!action.img || !action.note || !action.name || !action.species || !action.id)
+  {
+    alert("actions must contain key prop id, name, note, species, img ")
+    return location.reload()
+  }
   const plants = plantArray.map(eachPlant => {
-
+    console.log("each plant", eachPlant)
     if(eachPlant.id === action.id)
     {
-
         eachPlant.name = action.name
-        eachPlant.species = action.species
+        eachPlant.species_id = action.species
         eachPlant.img = action.img
         eachPlant.note = action.note
 
         return eachPlant
-
     }
     return eachPlant
-
-  })
+})
 
       // const plantToEdit = plantArray.find( plant => {
 
