@@ -1,23 +1,42 @@
 import React, { useState }from 'react'
 import { useEffect } from 'react'
 import { connect } from 'react-redux'
+import {updatedSpecies} from '../actions'
+import { Link } from 'react-router-dom'
 
 
 function Species(props) {
-
-  const {species,water,light} = props
+  const {species,water,light,dispatch} = props
   const species1 = species.find(s => s.id === Number(props.match.params.id))
-  console.log(species1)
+
   const [ediTing,setEditing] = useState(false)
-  const [comMon,setCommon] = useState(species1.common)
-  const [scienTific,setScientific] = useState(species1.scientific)
-  const [waterID,setWaterID] = useState(species1.water_id)
-  const [waterAmount,setWaterAmount] = useState(species1.water_amount)
-  const [waterFreq,setWaterFreq] = useState(species1.water_freq)
-  const [liGhtID,setLightID] = useState(species1.light_id)
-  const [noTe,setnoTe] = useState(species1.notes)
+  const [comMon,setCommon] = useState('')
+  const [scienTific,setScientific] = useState('')
+  const [waTer,setWater] = useState('')
+  const [liGht,setLight] = useState('')
+  const [waterFreq,setWaterFreq] = useState('')
+  const [noTe,setnoTe] = useState('')
+  const [waTerAmount,setWaterAmount] = useState('')
+  const [liGhtAmount,setLightAmount] = useState('')
+  const [waterID, setWaterID] = useState('')
+  const [lightID, setLightID] = useState('')
 
-
+  useEffect(()=>{
+    if(species1&&water&&light)
+    {
+      setCommon(species1.common)
+      setScientific(species1.scientific)
+      setWaterAmount(species1.water_amount)
+      setWaterFreq(species1.water_freq)
+      setnoTe(species1.notes)
+      setWater(water)
+      setLight(light)
+      setWaterAmount(species1.water_amount)
+      setLightAmount(species1.light_amount)
+      setLightID(species1.light_id)
+      setWaterID(species1.water_id)
+    }
+  },[species1])
   
   const waterHandler=(e)=>{
       setWaterID(parseInt(e.target.value))
@@ -39,34 +58,48 @@ function Species(props) {
   }
 
   const submitHandler=()=>{
+      var id=props.match.params.id;
+      if(ediTing==true)
+    {
+      const newSpecies={
+        common:comMon,
+        scientific:scienTific,
+        water:waterID,
+        light:lightID,
+        water_freq:waterFreq,
+        notes:noTe,
+        }
+      dispatch(updatedSpecies(id,newSpecies))
+    }
       setEditing(!ediTing)
+
   }
 
 
   return (
         <>
-           <div>
-                <form>
-                Common Name:{ediTing? <input onChange={commonHandler}>{comMon}</input> : <p>{species1.common}</p>}
-                Scientific Name:{ediTing? <input  onChange={scientificHandler}>{scienTific}</input> : <p>{species1.scientific}</p>}
-                Water Amount:{ediTing? <select onChange={(e)=>waterHandler(e)}>
+           <div className="base plant-details">
+  
+                <strong>Common Name:</strong>{ediTing? <input type="text" value={comMon} onChange={commonHandler}></input> : <p>{comMon}</p>}
+                <strong>Scientific Name:</strong>{ediTing? <input  type="text" value={scienTific} onChange={scientificHandler}></input> : <p>{scienTific}</p>}
+                <strong>Water Amount:</strong>{ediTing? <select onChange={(e)=>waterHandler(e)}>
                   {
-                    water.map((w)=>{
+                    waTer.map((w)=>{
                       return <option key={w.id} >{w.id}{w.amount}</option>
                     })
                   }
-                  </select> : <p>{species1.water_amount}</p>}
-                Light: {ediTing? <select onChange={(e)=>lightHandler(e)}>
+                  </select> : <p>{waTerAmount}</p>}
+                  <strong>Light:</strong> {ediTing? <select onChange={(e)=>lightHandler(e)}>
                   {
-                    light.map((l)=>{
+                    liGht.map((l)=>{
                       return <option key={l.id}>{l.id}{l.amount}</option>
                     })
                   }
-                  </select> : <p>{species1.light_amount}</p>}
-                Water Freq:{ediTing? <input value={waterFreq} onChange={waterfHandler}>{waterFreq}</input> : <p>{species1.water_freq}</p>}
-                Note: {ediTing? <input value={noTe} onChange={noteHandler}>{noTe}</input> : <p>{species1.notes}</p>}
-                <button onClick={submitHandler}>update</button>
-             </form>
+                  </select> : <p>{liGhtAmount}</p>}
+                  <strong>Water Freq:</strong>{ediTing? <input type="text" value={waterFreq} onChange={waterfHandler}></input> : <p>{waterFreq}</p>}
+                  <strong>Note: </strong>{ediTing? <input type="text" value={noTe} onChange={noteHandler}></input> : <p>{noTe}</p>}
+                <button onClick={submitHandler}>Update</button>
+                <Link to={`/species`}><button>Back</button></Link>
           </div>
         </>
   )

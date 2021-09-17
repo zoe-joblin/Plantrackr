@@ -8,7 +8,6 @@ function reducer (state = [], action) {
     case SAVE_PLANTS:
       return action.plants
     case UPDATE_PLANT:
-      console.log("plant ", state)
       return updatePlant(state, action)
         //plants: [state.map((plant) => plant === action.plant ? newPlant : plant )]
       // const plantToUpdate = state.plants.find(plant => plant.id === action.id)

@@ -1,4 +1,4 @@
-import { getPlants, updatePlant ,deletePlant, getSpecies, addSpecies, addPlant, getWater, getLight } from '../api/plants'
+import { getPlants, updatePlant ,updateSpecies,deletePlant, getSpecies, addSpecies, addPlant, getWater, getLight } from '../api/plants'
 
 export const SAVE_WATER = 'SAVE_WATER'
 export const SAVE_LIGHT = 'SAVE_LIGHT'
@@ -10,6 +10,7 @@ export const UPDATE_PLANT = 'UPDATE_PLANT'
 export const ADD_PLANT = 'ADD_PLANT'
 export const PLANT_DELETED = 'PLANT_DELETED'
 export const ADD_SPECIES = 'ADD_SPECIES'
+export const UPDATE_SPECIES = 'UPDATE_SPECIES'
 
 // export const EDIT_PLANT = 'EDIT_PLANT'
 
@@ -105,6 +106,20 @@ export const addSpeciesAction = (newSpecies) => {
   return {
     type: ADD_SPECIES,
     species: newSpecies
+  }
+}
+
+export const updateSpeciesAction = (id, newSpecies) => {
+
+  return {
+    type: UPDATE_SPECIES,
+    id: id,
+    common: newSpecies.common,
+    scientific: newSpecies.scientific,
+    water: newSpecies.water,
+    water_freq: newSpecies.water_freq,
+    light:newSpecies.light,
+    notes: newSpecies.notes,
   }
 }
 
@@ -219,6 +234,19 @@ export function deleteThunk (id) {
       .then(() => {
         dispatch(deleteAction(id))
       })
+  }
+}
+
+export function updatedSpecies (id, newSpeciesObject) {
+  return (dispatch) => {
+    updateSpecies(id, newSpeciesObject)
+      .then((output) => {
+       if (!output.updated) throw new Error('Not updated')
+        dispatch(updateSpeciesAction(id, newSpeciesObject))
+      })
+      .catch(err => {
+        dispatch(errMessage(err.message))
+       })
   }
 }
 
