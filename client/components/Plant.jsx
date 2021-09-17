@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import {useEffect} from 'react'
 import { deleteThunk, updatedPlant} from '../actions'
+import {Link} from 'react-router-dom'
 
 function Plant (props) {  const { plants, dispatch, species } = props
 
@@ -80,7 +81,7 @@ function Plant (props) {  const { plants, dispatch, species } = props
             <img src={`/images/${plant.img}`} style={{ maxWidth: '300px' }}/>
             <div>
             {editing?<button onClick={toggleEditing}>Save Details</button> : <button onClick={toggleEditing}>Edit Details</button>}
-            {editing?<form action="/" class="inline"><button>Cancel</button></form> : <button onClick={() => dispatch(deleteThunk(plant.id))}>Delete Plant</button>}
+            {editing?<form action="/" class="inline"><button>Cancel</button></form> : <Link to='/'><button onClick={() => dispatch(deleteThunk(plant.id))}>Delete Plant</button></Link>}
             </div>
             <div className='plant-container'>
             {editing?<><label className="plant-name"><strong><u>Plant Name: </u></strong></label><input value={plantName} onChange={(e)=>nameChangeHandler(e)}></input><br/></> : <><strong><u>Plant Name: </u></strong><p>{plantName}</p></>}
