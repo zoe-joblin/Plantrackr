@@ -11,10 +11,11 @@ function SpeciesList(props)
   console.log(species)
   return (
     <>
-    <div>
+    <div className="base plant-list">
+    <h2>Species</h2>
     <ul>
       {species.map(s => <Link to={`/species/${s.id}`} key={s.id}>
-        <p>{s.common}</p>
+        <p><strong>{s.common}</strong></p>
       </Link>)}
     </ul>
   </div>
