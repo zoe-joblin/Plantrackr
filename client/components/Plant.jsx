@@ -80,7 +80,7 @@ function Plant (props) {  const { plants, dispatch, species } = props
             <img src={`/images/${plant.img}`} style={{ maxWidth: '300px' }}/>
             <div>
             {editing?<button onClick={toggleEditing}>Save Details</button> : <button onClick={toggleEditing}>Edit Details</button>}
-            {editing?<button type='button' disabled>Cancel</button> : <button onClick={() => dispatch(deleteThunk(plant.id))}>Delete Plant</button>}
+            {editing?<form action="/" class="inline"><button>Cancel</button></form> : <button onClick={() => dispatch(deleteThunk(plant.id))}>Delete Plant</button>}
             </div>
             <div className='plant-container'>
             {editing?<><label className="plant-name"><strong><u>Plant Name: </u></strong></label><input value={plantName} onChange={(e)=>nameChangeHandler(e)}></input><br/></> : <><strong><u>Plant Name: </u></strong><p>{plantName}</p></>}
