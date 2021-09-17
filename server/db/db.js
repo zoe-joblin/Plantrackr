@@ -174,15 +174,15 @@ function getSpeciesById(id)
 }
 
 
-function addSpecies (species) 
-{
- return db('species')
- .insert(species)
- .then(id => {
-   return getSpeciesById(id[0])
- })
+// function addSpecies (species) 
+// {
+//  return db('species')
+//  .insert(species)
+//  .then(id => {
+//    return getSpeciesById(id[0])
+//  })
 
-}
+// }
 
 
 function deletePlantBySpeciesId (speciesId) 

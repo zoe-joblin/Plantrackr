@@ -22,7 +22,7 @@ function Species(props) {
   const [lightID, setLightID] = useState('')
 
   useEffect(()=>{
-    if(species1)
+    if(species1&&water&&light)
     {
       setCommon(species1.common)
       setScientific(species1.scientific)
@@ -69,7 +69,6 @@ function Species(props) {
         water_freq:waterFreq,
         notes:noTe,
         }
-        console.log(newSpecies)
       dispatch(updatedSpecies(id,newSpecies))
     }
       setEditing(!ediTing)
