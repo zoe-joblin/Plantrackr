@@ -108,6 +108,7 @@ function Plant (props) {  const { plants, dispatch, species } = props
   )
 }
 
+
 function mapState2Props (globalState) {
   return {
     plants: globalState.plants,
