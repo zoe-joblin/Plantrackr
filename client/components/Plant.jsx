@@ -22,7 +22,6 @@ function Plant (props) {  const { plants, dispatch, species } = props
   const [speciesNote, setSpeciesNote] = useState('')
 
   useEffect(()=>{
-
     if(plant)
     {
     setImage(plant.img)
@@ -81,23 +80,23 @@ function Plant (props) {  const { plants, dispatch, species } = props
             <img src={`/images/${plant.img}`} style={{ maxWidth: '300px' }}/>
             <div>
             {editing?<button onClick={toggleEditing}>Save Details</button> : <button onClick={toggleEditing}>Edit Details</button>}
-            {editing?<button type='button' disabled>Delete Plant</button> : <button onClick={() => dispatch(deleteThunk(plant.id))}>Delete Plant</button>}
+            {editing?<button type='button' disabled>Cancel</button> : <button onClick={() => dispatch(deleteThunk(plant.id))}>Delete Plant</button>}
             </div>
-            <div>
-            {editing?<><label className="plant-name"><strong>Plant Name: </strong></label><input value={plantName} onChange={(e)=>nameChangeHandler(e)}></input><br/></> : <><strong>Plant Name: </strong><p>{plantName}</p></>}
-            {editing?<><label><strong>Note: </strong></label><input value={note} onChange={(e)=>noteChangeHandler(e)}></input><br/></> : <><strong>Note: </strong><p>{note}</p></>}
-            {editing?<><label><strong>Species: </strong></label><select onChange={(e)=>speciesChangeHandler(e)}>
+            <div className='plant-container'>
+            {editing?<><label className="plant-name"><strong><u>Plant Name: </u></strong></label><input value={plantName} onChange={(e)=>nameChangeHandler(e)}></input><br/></> : <><strong><u>Plant Name: </u></strong><p>{plantName}</p></>}
+            {editing?<><label><strong><u>Note: </u></strong></label><input value={note} onChange={(e)=>noteChangeHandler(e)}></input><br/></> : <><strong><u>Note: </u></strong><p>{note}</p></>}
+            {editing?<><label><strong><u>Species: </u></strong></label><select onChange={(e)=>speciesChangeHandler(e)}>
             
             {
               species.map((s)=>{
                 return <option key={s.id} value={s.scientific}>{s.scientific}({s.common})</option>
               })
             }
-            </select></> : <><strong>Species: </strong><p>{scienTific}</p></>}
-            <p> <strong>Common Name:</strong><br/> {commonName}</p>
-            <p> <strong>Preferred amount of light:</strong><br/> {light}</p>
-            <p> <strong>How much water to give me:</strong><br/> {water} every {water_freq} days</p>
-            <p> <strong>Notes on Species:</strong><br/> {speciesNote}</p>       
+            </select></> : <><strong><u>Species: </u></strong><p>{scienTific}</p></>}
+            <p> <strong><u>Common Name:</u></strong><br/> {commonName}</p>
+            <p> <strong><u>Preferred amount of light:</u></strong><br/> {light}</p>
+            <p> <strong><u>How much water to give me:</u></strong><br/> {water} every {water_freq} days</p>
+            <p> <strong><u>Notes on Species:</u></strong><br/> {speciesNote}</p>       
             </div>  
     </div>
   }
