@@ -118,7 +118,7 @@ function getWaterById(id)
 
 function addWater(amount){
   return db('water')
-  .insert(amount)
+  .insert(amount, 'id')
   .then(waterId => {
     return getWaterById(waterId[0])
   })
@@ -126,7 +126,7 @@ function addWater(amount){
 
 function addSpecies(plantSpecies){
   return db('species')
-  .insert(plantSpecies)
+  .insert(plantSpecies, 'id')
   .then(speciesId => {
     return getSpeciesById(speciesId[0])
   })
@@ -134,7 +134,7 @@ function addSpecies(plantSpecies){
 
 function addlight(amount){
   return db('light')
-  .insert(amount)
+  .insert(amount, 'id')
   .then(lightId => {
     return getLightById(lightId[0])
   })
