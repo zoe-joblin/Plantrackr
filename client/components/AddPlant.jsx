@@ -92,7 +92,7 @@ function AddPlant(props){
         </select>
         <br/>
       <button>Add</button>
-      <Link to={`/species`}><button>Add a new species</button></Link>
+      <Link to={`/species/add`}><button>Add a new species</button></Link>
     </form>
     </div>
   )

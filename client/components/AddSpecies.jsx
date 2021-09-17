@@ -6,6 +6,9 @@ import { Link } from 'react-router-dom'
 
 
 function AddSpecies (props) {
+  const { dispatch ,species} = props
+  // console.log(props)
+
 
 const water = props.water
 const light = props.light
@@ -48,10 +51,7 @@ const [newLightData, setLight] = useState (0)
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // dispatch(createNewSpecies({
-    //   [e.target.name]: e.target.value,
-    //   ...newSpeciesData
-    // }))
+    props.dispatch(createNewSpecies)
   }
 
 
