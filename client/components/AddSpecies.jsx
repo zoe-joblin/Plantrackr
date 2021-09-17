@@ -88,7 +88,7 @@ const [newLightData, setLight] = useState (0)
           <label htmlFor='notes'>Notes:</label>
           <input name='notes' value={notes} type='text' onChange={handleChange}/>
         </div>
-        <button>Add Species</button>
+        <Link to ={'/'}><button>Add Species</button></Link>
         <Link to={`/`}><button>Cancel</button></Link>
       </form>
     </div>
