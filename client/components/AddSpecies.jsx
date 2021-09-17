@@ -2,6 +2,7 @@ import React, { useState }from 'react'
 import { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { createNewSpecies } from '../actions'
+import { Link } from 'react-router-dom'
 
 
 function AddSpecies (props) {
@@ -64,8 +65,8 @@ const [newSpeciesData, setNewSpecies] = useState ({
           </select>
         </div>
         <div className='new-species-label'>
-          <label htmlFor='name'>Water Frequency (days):</label>
-          <input name='name' value={frequency} type='text' onChange={handleChange}/>
+          <label htmlFor='name'>Water Frequency:</label>
+          <input name='name' value={frequency} type='text' onChange={handleChange} placeholder="2 days"/>
         </div>
         <div className='new-species-label'>
           <label htmlFor='name'>Light:</label>
@@ -81,6 +82,7 @@ const [newSpeciesData, setNewSpecies] = useState ({
           <input name='name' value={notes} type='text' onChange={handleChange}/>
         </div>
         <button>Add Species</button>
+        <Link to={`/`}><button>Cancel</button></Link>
       </form>
     </div>
   )

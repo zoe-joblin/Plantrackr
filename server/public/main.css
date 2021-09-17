@@ -82,13 +82,10 @@ select {
 }
 
 label {
-  /* display: inline-block; */
-  /* text-align: right; */
+  display: inline-block;
+  width:200px;
+  text-align: right;
   margin-right: 10px;
-}
-
-.new-species-label {
-  margin-top: auto;
 }
 
 a {
@@ -123,10 +120,6 @@ a {
   font-size: 1.2rem
 }
 
-.plant-details {
-
-}
-
 .plant-details p {
   margin: 12px 20px;
 }
@@ -157,4 +150,9 @@ a {
   padding: 10px;
   background-color: #4E763B;
   font-size: 1.2rem
+}
+
+/* form {
+  position: absolute;
+  left: 200px */
 }
