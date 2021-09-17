@@ -24,7 +24,6 @@ router.get('/:id', (req, res) => {
 })
 
 router.post('/', (req,res) => {
-
   const plant = req.body
   db.addPlant(plant)
   .then(eachPlant => {

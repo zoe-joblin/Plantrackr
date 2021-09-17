@@ -76,7 +76,7 @@ function getPlantInfo (id) {
 function addPlant(plant)
 {
     return db('plants')
-    .insert(plant)
+    .insert(plant, 'id')
     .then(plantId => {
       console.log("plant id", plantId)
       return getPlantById(plantId[0])
