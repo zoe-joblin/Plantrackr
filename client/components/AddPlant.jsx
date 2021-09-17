@@ -48,8 +48,8 @@ function AddPlant(props){
   // }
 
   return (
-    <div className="base add-plant">
-    <h2>Add Plant</h2>
+    <div className="base add-plant add">
+    <h2><u>Add Plant</u></h2>
     <form onSubmit={handleSubmit}>
       <label>Name </label>
       <input
@@ -90,6 +90,7 @@ function AddPlant(props){
         </select>
         <br/>
       <button>Add to my plants</button>
+      <br/>
       <Link to={`/species/add`}><button>Add a new species</button></Link>
     </form>
     </div>

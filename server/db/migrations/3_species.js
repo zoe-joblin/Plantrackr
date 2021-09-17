@@ -3,9 +3,9 @@ exports.up = knex => {
     table.increments('id').primary()
     table.string('common')
     table.string('scientific')
-    table.int('water').references('water.id')
-    table.int('water_freq')
-    table.int('light').references('light.id')
+    table.integer('water').references('water.id')
+    table.integer('water_freq')
+    table.integer('light').references('light.id')
     table.text('notes')
   })
 }
