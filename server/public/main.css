@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@1,600;1,800&display=swap');
+
 /* COLORS
 #537462
 #6D835C
@@ -19,6 +21,11 @@ body, html {
   text-align: center;
 }
 
+h1 {
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 50px;
+}
+
 .heading h1:hover, 
 /* .plant-list p:hover,  */
 .footer-container a:hover, 
@@ -34,8 +41,8 @@ body, html {
 }
 
 .logo{
-  padding-top: 0px;
-  max-height: 58px;
+  padding-top: 4px;
+  max-height: 83px;
   float: left;
 }
 
