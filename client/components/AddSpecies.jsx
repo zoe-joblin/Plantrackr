@@ -48,26 +48,28 @@ const [newLightData, setLight] = useState (0)
       // then set response as light state
 
   
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    const newSpecies = {
-      common: newSpeciesData.common,
-      scientific: newSpeciesData.scientific,
-      water_freq: newSpeciesData.frequency,
-      water: newWaterData,
-      light: newLightData,
-      notes: newSpeciesData.notes
-    }
-    dispatch(createNewSpecies(newSpecies))
-  }
+      
+      const handleSubmit = (e) => {
+        e.preventDefault()
+        const newSpecies = {
+          common: newSpeciesData.common,
+          scientific: newSpeciesData.scientific,
+          water_freq: newSpeciesData.frequency,
+          water: newWaterData,
+          light: newLightData,
+          notes: newSpeciesData.notes
+        }
+        console.log(newSpecies)
+        dispatch(createNewSpecies(newSpecies))
+        props.history.push('/')
+      }
 
 
   const { common, scientific, frequency, notes } = newSpeciesData
   return (
     <div className="base add-plant">
       <h2>Add new species</h2>
-      <form onSubmit={handleSubmit}>
+      <form>
       <div className='new-species-label'>
           <label htmlFor='common'>Common Name:</label>
           <input name='common' value={common} type='text' onChange={handleChange}/>
@@ -96,7 +98,7 @@ const [newLightData, setLight] = useState (0)
           <label htmlFor='notes'>Notes:</label>
           <input name='notes' value={notes} type='text' onChange={handleChange}/>
         </div>
-        <Link to ={'/'}><button>Add Species</button></Link>
+        <button onClick={handleSubmit}>Add Species</button>
         <Link to={`/`}><button>Cancel</button></Link>
       </form>
     </div>

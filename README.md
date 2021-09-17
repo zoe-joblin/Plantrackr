@@ -1,5 +1,39 @@
 # Plant Trackr
 
+
+Welcome to Plant Trackr!
+
+A plant to document all of your house plants to keep track of all of their needs.
+
+You can add a 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Setup
 
 After cloning this repo
