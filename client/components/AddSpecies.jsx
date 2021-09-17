@@ -43,18 +43,18 @@ const [newSpeciesData, setNewSpecies] = useState ({
 
   const { common, scientific, water, frequency, light, notes } = newSpeciesData
   return (
-    <>
-      <h4>Add new species</h4>
+    <div className="base add-plant">
+      <h2>Add new species</h2>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className='new-species-label'>
           <label htmlFor='name'>Common Name:</label>
           <input name='name' value={common} type='text' onChange={handleChange}/>
         </div>
-        <div>
+        <div className='new-species-label'>
           <label htmlFor='name'>Scientific Name:</label>
           <input name='name' value={scientific} type='text' onChange={handleChange}/>
         </div>
-        <div>
+        <div className='new-species-label'>
           <label htmlFor='name'>Water:</label>
           <select value={water} onChange={handleChange}>
             <option value={water}>Give me some drips</option>
@@ -63,11 +63,11 @@ const [newSpeciesData, setNewSpecies] = useState ({
             <option value={water}>Soak me</option>
           </select>
         </div>
-        <div>
+        <div className='new-species-label'>
           <label htmlFor='name'>Water Frequency (days):</label>
           <input name='name' value={frequency} type='text' onChange={handleChange}/>
         </div>
-        <div>
+        <div className='new-species-label'>
           <label htmlFor='name'>Light:</label>
           <select value={light} onChange={handleChange}>
             <option value={light}>I really don't mind</option>
@@ -76,13 +76,13 @@ const [newSpeciesData, setNewSpecies] = useState ({
             <option value={light}>Direct sun</option>
           </select>
         </div>
-        <div>
+        <div className='new-species-label'>
           <label htmlFor='name'>Notes:</label>
           <input name='name' value={notes} type='text' onChange={handleChange}/>
         </div>
         <button>Add Species</button>
       </form>
-    </>
+    </div>
   )
 }
 

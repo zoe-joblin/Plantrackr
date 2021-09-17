@@ -64,7 +64,7 @@ function AddPlant(props){
         type="text"
         id="addPlantNote"
         name="note"
-        placeholder="My fave plant etc"
+        placeholder="My fave plant"
         value={newPlantNote}
         onChange={handleNoteChange}
       />
@@ -90,6 +90,7 @@ function AddPlant(props){
         </select>
         <br/>
       <button>Add</button>
+      <button>Add a new species</button>
     </form>
     </div>
   )

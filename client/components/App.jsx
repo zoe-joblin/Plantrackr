@@ -23,7 +23,7 @@ function App (props) {
     <div>
       <div className="base heading"> 
         <Link to='/'>
-        <div class='header-container'><img className='logo' src='/images/planticon.png'/>
+        <div className='header-container'><img className='logo' src='/images/planticon.png'/>
         <h1>PlantTrackr</h1>
         </div>
         </Link>
