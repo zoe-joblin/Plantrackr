@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { Route, Link } from 'react-router-dom'
+import { Route, Link, Switch } from 'react-router-dom'
 import AddPlant from './AddPlant'
 import { loadPlants,loadSpecies ,loadWater,loadLight} from '../actions'
 import PlantList from './PlantList'
@@ -19,6 +19,7 @@ function App (props) {
     dispatch(loadLight())
   }, [])
 
+
   return (
     <div>
       <div className="base heading"> 
@@ -28,8 +29,10 @@ function App (props) {
       <Route path='/plants/:id' component={Plant} />
       <Route exact path='/' component={AddPlant}/>
       <Route exact path='/species' component={SpeciesList}/>
-      <Route exact path='/species/add' component={AddSpecies}/>
-      <Route path='/species/:id' component={Species}/>
+      <Switch>
+        <Route exact path='/species/add' component={AddSpecies}/>
+        <Route exact path='/species/:id' component={Species}/>
+      </Switch>
       <Footer />
     </div>
   )
