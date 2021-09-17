@@ -1,6 +1,6 @@
 exports.up = knex => {
   return knex.schema.createTable('species', table => {
-    table.increments('id')
+    table.increments('id').primary()
     table.string('common')
     table.string('scientific')
     table.int('water').references('water.id')

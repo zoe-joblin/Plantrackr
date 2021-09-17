@@ -1,6 +1,6 @@
 exports.up = knex => {
   return knex.schema.createTable('water', table => {
-    table.increments('id')
+    table.increments('id').primary()
     table.string('amount')
   })
 }
