@@ -68,3 +68,10 @@ export const addSpecies = (newSpecies) => {
   .send (newSpecies)
   .then (res => res.body.id)
 }
+
+export const updateSpecies = (id, newDetails) => {
+  return request
+    .patch(`/api/v1/species/${id}`)
+    .send(newDetails)
+    .then(res => res.body)
+}

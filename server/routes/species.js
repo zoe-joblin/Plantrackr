@@ -10,7 +10,6 @@ router.get('/', (req,res) => {
   .then(allSpecies => {
     return res.json(allSpecies)
   })
-
 })
 
 router.get('/water', (req,res) => {
@@ -57,7 +56,7 @@ router.patch('/:id', (req, res) => {
   db.updateSpecies(id, newSpecies)
   .then((species) => {
     //console.log("species ", species)
-      return res.json(newSpecies)
+      return res.json({updated:species})
   })
   .catch (err => {console.log(err.message)})
 })

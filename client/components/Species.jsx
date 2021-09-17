@@ -1,13 +1,13 @@
 import React, { useState }from 'react'
 import { useEffect } from 'react'
 import { connect } from 'react-redux'
+import {updatedSpecies} from '../actions'
 import { Link } from 'react-router-dom'
 
-function Species(props) {
 
-  const {species,water,light} = props
+function Species(props) {
+  const {species,water,light,dispatch} = props
   const species1 = species.find(s => s.id === Number(props.match.params.id))
-  console.log(species1)
 
   const [ediTing,setEditing] = useState(false)
   const [comMon,setCommon] = useState('')
@@ -18,8 +18,8 @@ function Species(props) {
   const [noTe,setnoTe] = useState('')
   const [waTerAmount,setWaterAmount] = useState('')
   const [liGhtAmount,setLightAmount] = useState('')
-
-
+  const [waterID, setWaterID] = useState('')
+  const [lightID, setLightID] = useState('')
 
   useEffect(()=>{
     if(species1)
@@ -33,6 +33,8 @@ function Species(props) {
       setLight(light)
       setWaterAmount(species1.water_amount)
       setLightAmount(species1.light_amount)
+      setLightID(species1.light_id)
+      setWaterID(species1.water_id)
     }
   },[species1])
   
@@ -56,8 +58,22 @@ function Species(props) {
   }
 
   const submitHandler=()=>{
-    
+      var id=props.match.params.id;
+      if(ediTing==true)
+    {
+      const newSpecies={
+        common:comMon,
+        scientific:scienTific,
+        water:waterID,
+        light:lightID,
+        water_freq:waterFreq,
+        notes:noTe,
+        }
+        console.log(newSpecies)
+      dispatch(updatedSpecies(id,newSpecies))
+    }
       setEditing(!ediTing)
+
   }
 
 
