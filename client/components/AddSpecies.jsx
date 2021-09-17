@@ -89,7 +89,7 @@ const [newLightData, setLight] = useState (0)
           <input name='notes' value={notes} type='text' onChange={handleChange}/>
         </div>
         <Link to ={'/'}><button>Add Species</button></Link>
-        <Link to={`/`}><button>Cancel</button></Link>
+        <Link to={`/species`}><button>Cancel</button></Link>
       </form>
     </div>
   )

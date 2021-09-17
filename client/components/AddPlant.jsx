@@ -49,7 +49,7 @@ function AddPlant(props){
 
   return (
     <div className="base add-plant">
-    <h2>Add Plant</h2>
+    <h2><u>Add Plant</u></h2>
     <form onSubmit={handleSubmit}>
       <label>Name </label>
       <input
