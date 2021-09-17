@@ -13,17 +13,17 @@ body, html {
   color: white;
 }
 
-.base
-{
+.base {
   width: 65%;
   border: 5px solid #193C0D;
   text-align: center;
 }
 
-.heading a:hover, 
-.list:hover, 
+.heading h1:hover, 
+/* .plant-list p:hover,  */
 .footer-container a:hover, 
-.plant-details button:hover {
+.plant-details button:hover,
+.add-plant button:hover {
   background-color: #729C65;
 }
 
@@ -31,6 +31,17 @@ body, html {
   margin: 20px auto;
   padding: 10px;
   background-color: #4E763B;
+}
+
+.logo{
+  padding-top: 0px;
+  max-height: 58px;
+  float: left;
+}
+
+.header-container {
+  display: flex;
+  justify-content: center;
 }
 
 .plant-list {
@@ -48,6 +59,7 @@ body, html {
   margin: 20px auto;
   padding: 0 10px 20px 10px;
   background-color: #4E763B;
+  font-weight: bold;
 }
 
 .add-plant div {
@@ -63,6 +75,20 @@ input, select {
   padding: 5px;
   margin: 5px 0;
   width: 250px;
+}
+
+select {
+  width: 260px;
+}
+
+label {
+  /* display: inline-block; */
+  /* text-align: right; */
+  margin-right: 10px;
+}
+
+.new-species-label {
+  margin-top: auto;
 }
 
 a {
@@ -97,14 +123,28 @@ a {
   font-size: 1.2rem
 }
 
+.plant-details {
+
+}
+
 .plant-details p {
-  margin: 8px 20px;
+  margin: 12px 20px;
 }
 
 .plant-details button {
   border: 5px solid #193C0D;
   margin: 10px;
   padding: 15px 25px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: #6D835C;
+  color: white;
+}
+
+.add-plant button {
+  border: 5px solid #193C0D;
+  margin: 10px;
+  padding: 5px 15px;
   font-size: 1.2rem;
   font-weight: bold;
   background-color: #6D835C;
