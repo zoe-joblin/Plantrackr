@@ -2,6 +2,7 @@ import React, { useState }from 'react'
 import { useEffect } from 'react'
 import { connect } from 'react-redux'
 import {createNewPlant} from '../actions'
+import { Link } from 'react-router-dom'
 
 function AddPlant(props){
   const { dispatch ,species,water,light} = props
@@ -14,6 +15,7 @@ function AddPlant(props){
       species:newSpecies,
     }))
   }
+  
   const [newSpecies,setNewSpecies] = useState('')
    const [newPlantName, setNewPlantName] = useState('')
   const [newPlantNote, setNewPlantNote] = useState('')
@@ -47,43 +49,50 @@ function AddPlant(props){
 
   return (
     <div className="base add-plant">
+    <h2>Add Plant</h2>
     <form onSubmit={handleSubmit}>
-      <label>Name:</label>
+      <label>Name </label>
       <input
         type="text"
         id="addPlantName"
         name="name"
+        placeholder="Alex"
         value={newPlantName}
         onChange={handleNameChange}
       />
       <br/>
-      <label>Note:</label>
+      <label>Note </label>
       <input
         type="text"
         id="addPlantNote"
         name="note"
+        placeholder="My fave plant"
         value={newPlantNote}
         onChange={handleNoteChange}
       />
       <br/>
-      <label>Picture:</label>
+      <label>Picture </label>
       <input
         type="text"
         id="addPlantImage"
         name="name"
+        placeholder="example.png"
         value={newPlantImage}
         onChange={handleImageChange}
       />
       <br/>
-              Species:
+      <label>Species </label>
         <select  onChange={e=>handleSpeciesChange(e)}>
+        <option value="" selected disabled hidden>Click here!</option>
           {
         species.map((s) => {
           return <option key={s.id}>{s.id}{s.scientific}({s.common})</option>
           })
         }
         </select>
+        <br/>
       <button>Add</button>
+      <Link to={`/species`}><button>Add a new species</button></Link>
     </form>
     </div>
   )

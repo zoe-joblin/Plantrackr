@@ -2,6 +2,7 @@ import React, { useState }from 'react'
 import { useEffect } from 'react'
 import { connect } from 'react-redux'
 import {updatedSpecies} from '../actions'
+import { Link } from 'react-router-dom'
 
 
 function Species(props) {
@@ -78,27 +79,28 @@ function Species(props) {
 
   return (
         <>
-           <div>
+           <div className="base plant-details">
   
-                Common Name:{ediTing? <input type="text" value={comMon} onChange={commonHandler}></input> : <p>{comMon}</p>}
-                Scientific Name:{ediTing? <input  type="text" value={scienTific} onChange={scientificHandler}></input> : <p>{scienTific}</p>}
-                Water Amount:{ediTing? <select onChange={(e)=>waterHandler(e)}>
+                <strong>Common Name:</strong>{ediTing? <input type="text" value={comMon} onChange={commonHandler}></input> : <p>{comMon}</p>}
+                <strong>Scientific Name:</strong>{ediTing? <input  type="text" value={scienTific} onChange={scientificHandler}></input> : <p>{scienTific}</p>}
+                <strong>Water Amount:</strong>{ediTing? <select onChange={(e)=>waterHandler(e)}>
                   {
                     waTer.map((w)=>{
                       return <option key={w.id} >{w.id}{w.amount}</option>
                     })
                   }
                   </select> : <p>{waTerAmount}</p>}
-                Light: {ediTing? <select onChange={(e)=>lightHandler(e)}>
+                  <strong>Light:</strong> {ediTing? <select onChange={(e)=>lightHandler(e)}>
                   {
                     liGht.map((l)=>{
                       return <option key={l.id}>{l.id}{l.amount}</option>
                     })
                   }
                   </select> : <p>{liGhtAmount}</p>}
-                Water Freq:{ediTing? <input type="text" value={waterFreq} onChange={waterfHandler}></input> : <p>{waterFreq}</p>}
-                Note: {ediTing? <input type="text" value={noTe} onChange={noteHandler}></input> : <p>{noTe}</p>}
-                <button onClick={submitHandler}>update</button>
+                  <strong>Water Freq:</strong>{ediTing? <input type="text" value={waterFreq} onChange={waterfHandler}></input> : <p>{waterFreq}</p>}
+                  <strong>Note: </strong>{ediTing? <input type="text" value={noTe} onChange={noteHandler}></input> : <p>{noTe}</p>}
+                <button onClick={submitHandler}>Update</button>
+                <Link to={`/species`}><button>Back</button></Link>
           </div>
         </>
   )
