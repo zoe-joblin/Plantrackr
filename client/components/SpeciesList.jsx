@@ -19,6 +19,7 @@ function SpeciesList(props)
       </Link>)}
     </ul>
     <button><Link to={'/species/add'}>Add new species</Link></button>
+    <button><Link to={'/'}>Back</Link></button>
   </div>
   </>
   )
