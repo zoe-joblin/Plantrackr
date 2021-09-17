@@ -2,6 +2,7 @@ import React, { useState }from 'react'
 import { useEffect } from 'react'
 import { connect } from 'react-redux'
 import {createNewPlant} from '../actions'
+import { Link } from 'react-router-dom'
 
 function AddPlant(props){
   const { dispatch ,species,water,light} = props
@@ -91,7 +92,7 @@ function AddPlant(props){
         </select>
         <br/>
       <button>Add</button>
-      <button>Add a new species</button>
+      <Link to={`/species`}><button>Add a new species</button></Link>
     </form>
     </div>
   )

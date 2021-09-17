@@ -2,6 +2,7 @@ import React, { useState }from 'react'
 import { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { createNewSpecies, loadLight, loadWater } from '../actions'
+import { Link } from 'react-router-dom'
 
 
 function AddSpecies (props) {
@@ -88,6 +89,7 @@ const [newLightData, setLight] = useState (0)
           <input name='notes' value={notes} type='text' onChange={handleChange}/>
         </div>
         <button>Add Species</button>
+        <Link to={`/`}><button>Cancel</button></Link>
       </form>
     </div>
   )
