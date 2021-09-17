@@ -56,7 +56,6 @@ function AddPlant(props){
         type="text"
         id="addPlantName"
         name="name"
-        placeholder="Alex"
         value={newPlantName}
         onChange={handleNameChange}
       />
@@ -66,7 +65,6 @@ function AddPlant(props){
         type="text"
         id="addPlantNote"
         name="note"
-        placeholder="My fave plant"
         value={newPlantNote}
         onChange={handleNoteChange}
       />
@@ -86,12 +84,12 @@ function AddPlant(props){
         <option value="" selected disabled hidden>Click here!</option>
           {
         species.map((s) => {
-          return <option key={s.id}>{s.id}{s.scientific}({s.common})</option>
+          return <option key={s.id}>{s.scientific}({s.common})</option>
           })
         }
         </select>
         <br/>
-      <button>Add</button>
+      <button>Add to my plants</button>
       <Link to={`/species/add`}><button>Add a new species</button></Link>
     </form>
     </div>

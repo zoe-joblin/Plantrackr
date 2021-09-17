@@ -6,12 +6,11 @@ import { Link } from 'react-router-dom'
 
 
 function AddSpecies (props) {
-  const { dispatch ,species} = props
-  // console.log(props)
-
+  const { dispatch, species} = props
 
 const water = props.water
 const light = props.light
+
 
 const [newSpeciesData, setNewSpecies] = useState ({
   common: '',
@@ -40,6 +39,7 @@ const [newLightData, setLight] = useState (0)
 
  const handleLight = (e) => {
   e.preventDefault()
+  // console.log(e.target.value)
   setLight(Number(e.target.value))
 }
   // call get water api (that goes to db and gets everything from water db table)
@@ -51,7 +51,15 @@ const [newLightData, setLight] = useState (0)
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    props.dispatch(createNewSpecies)
+    const newSpecies = {
+      common: newSpeciesData.common,
+      scientific: newSpeciesData.scientific,
+      water_freq: newSpeciesData.frequency,
+      water: newWaterData,
+      light: newLightData,
+      notes: newSpeciesData.notes
+    }
+    dispatch(createNewSpecies(newSpecies))
   }
 
 
